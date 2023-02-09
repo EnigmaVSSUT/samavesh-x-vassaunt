@@ -1,4 +1,6 @@
+import Layout from '@/components/layout/Layout'
 import { Button, Stack, Typography, useMediaQuery } from '@mui/material'
+import Link from 'next/link'
 import { useEffect } from 'react'
 
 
@@ -10,18 +12,32 @@ const Home = () => {
 	}, [isTouchDevice])
 
 	return (
-		<Stack>
+		<Layout>
 			<Typography
 				variant='h1'
 			>
 				SAMAVESH X VASSAUNT huehue
 			</Typography>
-			<Button
-				variant='contained'
+			<Stack
+				direction='row'
+				gap='16px'
 			>
-				Register
-			</Button>
-		</Stack>
+				<Button
+					variant='contained'
+				>
+					Register
+				</Button>
+				<Link
+					href='/about'
+				>
+					<Button
+						variant='contained'
+					>
+						About
+					</Button>
+				</Link>
+			</Stack>
+		</Layout>
 	)
 }
 
