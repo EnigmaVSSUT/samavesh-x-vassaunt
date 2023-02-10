@@ -11,8 +11,9 @@ import Link from "next/link";
 const Footer = () => {
 	return (
 		<Stack
-			padding='10px 32px'
+			// padding='10px 32px'
 			alignItems='center'
+			sx={{overflowX:"hidden"}}
 		>
 			<Box sx={{backgroundColor:"#C0000A",
 		width:"100vw",height:"400px",display:"flex",justifyContent:'center',alignItems:"center",flexDirection:"column"}}>
