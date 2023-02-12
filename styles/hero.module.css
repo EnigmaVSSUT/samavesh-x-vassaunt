@@ -1,0 +1,30 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  max-width: 100vw;
+  height: auto;
+  margin-top: 50px;
+}
+.intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  max-width: 100vw;
+  gap: 15vmin;
+  height: 80vh;
+  margin: 0 auto;
+}
+
+.theme {
+  height: 100vh;
+  gap: 32px;
+}
+.text {
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
