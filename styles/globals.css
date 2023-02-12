@@ -3,7 +3,10 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
+a{
+	text-decoration: none;
+	color: inherit;
+}
 @font-face {
 	font-family: 'Marvel';
 	src: url('/fonts/MarvelRegular.ttf');
