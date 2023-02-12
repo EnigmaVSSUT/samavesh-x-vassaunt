@@ -1,8 +1,11 @@
 const typographyOptions = {
-	fontFamily: 'Marvel',
+	fontFamily: 'BentonSans Comp Black',
 	h1: {
-		fontFamily: 'Marvel',
+		fontFamily: 'BentonSans Comp Black',
 		textTransform: 'uppercase'
+	},
+	nav:{
+		fontSize:"1rem",fontWeight:800,fontFamily:"Product sans"
 	}
 }
 

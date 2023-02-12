@@ -2,9 +2,9 @@ import { Stack, Typography,Box} from "@mui/material"
 import Marquee from "react-fast-marquee";
 const Marqueesv = () => {
 	return (
-            <Marquee >
-<Typography sx={{color:"transparent",fontSize: "180px",
-lineHeight: "180px",WebkitTextStrokeColor:"#857370" ,WebkitTextStrokeWidth:"1px"}}>SAMAVESH X VASSAUNT</Typography>
+            <Marquee speed={80} gradient={false}>
+<Typography sx={{color:"transparent",fontSize: "150px",
+lineHeight: "180px",WebkitTextStrokeColor:"#857370" ,WebkitTextStrokeWidth:"1px",postion:'relative',top:"50px"}}>SAMAVESH X VASSAUNT</Typography>
 </Marquee>
     )
 }
