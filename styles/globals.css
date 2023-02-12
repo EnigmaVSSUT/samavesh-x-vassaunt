@@ -35,3 +35,6 @@ a{
 	/* -webkit-text-stroke-color:#857370;
 	-webkit-text-stroke-width:1px; */
 }
+#black{
+	-webkit-text-stroke-color:#000000;
+}
