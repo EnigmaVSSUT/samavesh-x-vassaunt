@@ -37,10 +37,12 @@
 
 }
 .p1{
+    font-family: 'BentonSans Comp Black';   
     font-weight: 400;
     font-size: 30px;
 }
 .p2{
+    font-family: 'BentonSans Comp Black';
     font-weight: 400;
     font-size: 19px;
     text-decoration-line: underline;
