@@ -6,7 +6,9 @@ const componentsOptions = {
 		},
 		styleOverrides: {
 			root: {
-				width: 'fit-content'
+				width: 'fit-content',
+				backgroundColor:"#C0000A",
+				borderRadius:"0.3rem !important"
 			}
 		}
 	}

@@ -9,8 +9,8 @@ const renderer = ({ days,hours, minutes, seconds, completed }) => {
       return <Completionist />;
     } else {
       // Render a countdown
-      return  <Typography sx={{fontSize:"100px",color:'#C0000A',fontWeight:'900',}}>
-      {zeroPad(days)}:{zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+      return  <Typography sx={{fontSize:"68px",color:'#C0000A',fontWeight:'900',}}>
+      {zeroPad(days)}<span id="sub">days</span>{zeroPad(hours)}<span id="sub">hours</span>{zeroPad(minutes)}<span id="sub">mins</span>{zeroPad(seconds)}<span id="sub">sec</span>
       </Typography>;
     }
   };
@@ -28,12 +28,12 @@ alignItems: "flex-start"}}>
     <Container sx={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: "center",
+        alignItems: "left",
         padding:'32px',
         gap: '10px'
     }}
     >
-        <Typography sx={{color:"#C0000A",fontWeight:"900",fontSize:"36px",lineHeight:"44px"}}>Starting in</Typography>
+        <Typography sx={{color:"#C0000A",fontWeight:"900",fontSize:"2.8rem",lineHeight:"40px"}}>Starting in</Typography>
         <Server><Countdown
     // date= {1677868200000}
     date={Date.now()+50000}
