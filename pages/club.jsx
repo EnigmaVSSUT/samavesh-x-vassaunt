@@ -4,7 +4,7 @@ import { Avatar } from "@mui/material";
 
 const Clubs = () => {
   return (
-    <Stack sx={{paddingTop: "50px" }}>
+    <Stack sx={{ paddingTop: "50px" }}>
       <Stack
         direction="row"
         sx={{ justifyContent: "space-between", padding: "20px" }}
@@ -13,13 +13,22 @@ const Clubs = () => {
           <Typography
             variant="h2"
             color="initial"
-            sx={{ textDecoration: "underline",fontFamily: 'BentonSans Comp Black',
-            textTransform: 'uppercase' }}
+            sx={{
+              textDecoration: "underline",
+              fontFamily: "BentonSans Comp Black",
+              textTransform: "uppercase",
+            }}
           >
             ENIGMA
           </Typography>
-          <Typography variant="h6" color="initial" sx={{fontFamily: 'BentonSans Comp Black',
-		textTransform: 'uppercase'}}>
+          <Typography
+            variant="h6"
+            color="initial"
+            sx={{
+              fontFamily: "BentonSans Comp Black",
+              textTransform: "uppercase",
+            }}
+          >
             OFFICIAL WEB AND CODING CLUB
           </Typography>
         </Stack>
@@ -27,8 +36,11 @@ const Clubs = () => {
           <Typography
             variant="h4"
             color="initial"
-            sx={{ marginBottom: "30px",fontFamily: 'BentonSans Comp Black',
-            textTransform: 'uppercase' }}
+            sx={{
+              marginBottom: "30px",
+              fontFamily: "BentonSans Comp Black",
+              textTransform: "uppercase",
+            }}
           >
             POINT OF CONTACT
           </Typography>
@@ -75,7 +87,7 @@ const Clubs = () => {
               backgroundColor: "red",
               padding: "10px",
               border: "3px solid black",
-              justifyContent:"space-between"
+              justifyContent: "space-between",
             }}
           >
             <Stack>
@@ -102,7 +114,7 @@ const Clubs = () => {
               backgroundColor: "red",
               padding: "10px",
               border: "3px solid black",
-              justifyContent:"space-between"
+              justifyContent: "space-between",
             }}
           >
             <Stack>
@@ -129,7 +141,7 @@ const Clubs = () => {
               backgroundColor: "red",
               padding: "10px",
               border: "3px solid black",
-              justifyContent:"space-between"
+              justifyContent: "space-between",
             }}
           >
             <Stack>

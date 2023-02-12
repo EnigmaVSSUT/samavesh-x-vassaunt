@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-		"target": "ES6",
+    "target": "ES6",
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["./components/*"],
-			"@/styles/*": ["./styles/*"],
-			"@/lib/*": ["./lib/*"]
+      "@/styles/*": ["./styles/*"],
+      "@/lib/*": ["./lib/*"]
     },
-		"moduleResolution": "node"
+    "moduleResolution": "node"
   }
 }
