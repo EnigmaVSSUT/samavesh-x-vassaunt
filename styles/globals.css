@@ -1,13 +1,37 @@
+@import url(//db.onlinewebfonts.com/c/264e1e98d1a3848556f98a4f8085236d?family=BentonSans+Comp+Black);
+@import url(//db.onlinewebfonts.com/c/282c8e780436765ea68a4dd5f89256fb?family=Formula+Condensed);
+@import url(//db.onlinewebfonts.com/c/05093c1553c8ca12edeb59994bedc772?family=Product+Sans);
+@import url(//db.onlinewebfonts.com/c/5719adfbee8edfbb73d99a70e46fd4f8?family=Product+Sans+Thin);
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	/* font-family: 'BentonSans Comp Black'; */
+	/* font-family: 'bentonsans-comp-black-regular', sans-serif; */
 }
+@font-face {
+	font-family: 'Product Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  }
 a{
 	text-decoration: none;
 	color: inherit;
 }
-@font-face {
+/* @font-face {
 	font-family: 'Marvel';
 	src: url('/fonts/MarvelRegular.ttf');
+} */
+.marquee-container {
+    position: relative;
+    bottom: 9.5vh;
+}
+#sub{
+	vertical-align: sub;
+	font-size:1.2rem;
+	/* opacity: 0.7; */
+	color:#4D4544;
+	/* -webkit-text-stroke-color:#857370;
+	-webkit-text-stroke-width:1px; */
 }
