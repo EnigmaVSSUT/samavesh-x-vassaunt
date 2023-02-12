@@ -24,7 +24,7 @@ lineHeight: "52px"}}>Sponsors</Typography>
                     flexDirection: "column",
                     alignItems: "flex-start",
                     padding: "40px",background: "#C0000A",
-                    borderRadius: "8px"}}>
+                    borderRadius: "8px",width:"70vw"}}>
                         <Box sx={{display:"flex",
                     flexDirection: "row",
                     alignItems: "flex-start",
