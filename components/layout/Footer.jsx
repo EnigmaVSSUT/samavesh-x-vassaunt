@@ -71,16 +71,16 @@ const Footer = () => {
               }}
             >
               <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
-                <Link href="/theme">THEME</Link>
+                <Link href="/#theme">THEME</Link>
               </Typography>
               <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
                 <Link href="/events">EVENTS</Link>
               </Typography>
               <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
-                <Link href="/speakers">SPEAKERS</Link>
+                <Link href="/#speakers">SPEAKERS</Link>
               </Typography>
               <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
-                <Link href="/sponsors">SPONSORS</Link>
+                <Link href="/#sponsors">SPONSORS</Link>
               </Typography>
             </Box>
 
@@ -100,11 +100,11 @@ const Footer = () => {
                 <Link href="https://instagram.com/samavesh.vssut?igshid=YmMyMTA2M2Y=">
                   <InstagramIcon />
                 </Link>
-                <Link href="www.instagram.com">
+                <Link href="www.twitter.com">
                   {" "}
                   <TwitterIcon />
                 </Link>
-                <Link href="www.instagram.com">
+                <Link href="www.youtube.com">
                   {" "}
                   <YouTubeIcon />
                 </Link>

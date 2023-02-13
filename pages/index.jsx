@@ -78,7 +78,7 @@ const Hero = () => {
       </div>
       <div id="speakers"></div>
       <Speakers />
-      <div id="sponsor"></div>
+      <div id="sponsors"></div>
       <Sponsor />
     </Box>
   );

@@ -12,7 +12,7 @@ const Sponsor = () => {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "flex-start",
-        padding: "0px",
+        paddingTop: "25px",
       }}
     >
       <Box
