@@ -20,7 +20,7 @@ const Header = () => {
       <Typography
         sx={{
           color: "#C0000A",
-          fontFamily: "Formula Condensed",
+          fontFamily: "BentonSans Comp Black",
           fontSize: "1.7rem",
         }}
       >

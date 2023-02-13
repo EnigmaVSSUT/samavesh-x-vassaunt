@@ -30,10 +30,9 @@ const TabPanel = () => {
       orientation={greaterThanLg ? "vertical" : "horizontal"}
       value={activeTab}
       onChange={handleChange}
-      sx={{
-        position: "sticky",
-        top: 0,
-      }}
+      variant="scrollable"
+      scrollButtons
+      allowScrollButtonsMobile
     >
       <Tab
         label={
@@ -57,6 +56,28 @@ const TabPanel = () => {
         }
       />
     </Tabs>
+  );
+};
+
+const Day = ({ day }) => {
+  return (
+    <Typography
+      variant="ACH1"
+      fontSize={250}
+      textAlign="center"
+      sx={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        color: "transparent",
+        WebkitTextStrokeColor: "#857370",
+        WebkitTextStrokeWidth: "1px",
+        zIndex: -1,
+      }}
+    >
+      DAY : {day}
+    </Typography>
   );
 };
 
@@ -94,10 +115,12 @@ const EventContainer = ({ timeline: { events, day } }) => {
           flexWrap="wrap"
           alignItems="center"
           justifyContent="center"
+          position="relative"
         >
           {events.map((e) => (
             <EventCard event={e} key={e.name} />
           ))}
+          <Day day={day + 1} />
         </Stack>
       </motion.main>
     </AnimatePresence>
