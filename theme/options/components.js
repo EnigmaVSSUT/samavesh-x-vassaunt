@@ -12,6 +12,11 @@ const componentsOptions = {
       },
     },
   },
+  MuiTab: {
+    defaultProps: {
+      disableRipple: true,
+    },
+  },
 };
 
 export default componentsOptions;
