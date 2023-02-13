@@ -20,7 +20,7 @@ const Sponsor = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: "64px 64px !important",
+          padding: "32px 0",
           gap: "20px",
         }}
       >

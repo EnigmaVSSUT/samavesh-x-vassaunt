@@ -28,15 +28,19 @@ const Hero = () => {
         <Typography
           variant="h3"
           color="initial"
-          maxWidth={"380px"}
-          sx={{ fontSize: "2.8rem" }}
+          sx={{
+            fontSize: {
+              xs: "2.5rem",
+              md: "2.8rem",
+            },
+            maxWidth: { xs: "300px", md: "380px" },
+          }}
         >
           THE ANNUAL
           <br />
           TECHNO-CULTURAL
           <br />
           FEST OF VSSUT
-          <br />
           <Timersv />
         </Typography>
         <img src="./theme.png" alt="Fest Poster" className={styles.poster1} />

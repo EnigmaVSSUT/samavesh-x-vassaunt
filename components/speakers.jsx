@@ -22,7 +22,7 @@ const Speakers = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: "64px 64px !important",
+          padding: "30px 0px ",
           gap: "20px",
         }}
       >
