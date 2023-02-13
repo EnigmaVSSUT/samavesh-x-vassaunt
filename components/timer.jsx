@@ -16,7 +16,7 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
     return (
       <Typography
         sx={{
-          fontSize: { xs: "50px", md: "75px" },
+          fontSize: { xs: "40px", md: "75px" },
           color: "#C0000A",
           fontWeight: "900",
         }}

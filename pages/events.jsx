@@ -106,7 +106,6 @@ const EventContainer = ({ timeline: { events, day } }) => {
         }}
         style={{
           position: "relative",
-          padding: "32px",
         }}
       >
         <Stack
@@ -131,7 +130,15 @@ const TabContent = () => {
   const activeTab = useEventTimelineStore((state) => state.activeTab);
 
   return (
-    <Stack padding="32px" flexGrow={1}>
+    <Stack
+      flexGrow={1}
+      sx={{
+        padding: {
+          xs: "0px",
+          md: "32px",
+        },
+      }}
+    >
       <EventContainer timeline={timeline[activeTab]} />
     </Stack>
   );
@@ -141,7 +148,16 @@ const Events = () => {
   const activeTab = useEventTimelineStore((state) => state.activeTab);
 
   return (
-    <Stack padding="32px" position="sticky" top="100px">
+    <Stack
+      sx={{
+        padding: {
+          xs: "0px",
+          md: "32px",
+        },
+      }}
+      position="sticky"
+      top="100px"
+    >
       <Typography variant="ACH1" textAlign="center">
         Event Timeline
       </Typography>
@@ -150,7 +166,12 @@ const Events = () => {
           xs: "column",
           lg: "row",
         }}
-        padding="24px"
+        sx={{
+          padding: {
+            xs: "0px",
+            md: "32px",
+          },
+        }}
         alignItems={{
           xs: "center",
           lg: "start",
