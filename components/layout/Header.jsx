@@ -1,7 +1,21 @@
-import { Typography, Stack, Button, AppBar, Box } from "@mui/material";
+import {
+  Typography,
+  Stack,
+  Button,
+  AppBar,
+  Box,
+  IconButton,
+  SwipeableDrawer,
+  Divider,
+  List,
+  ListItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Link from "next/link";
-
+import { useState } from "react";
 const Header = () => {
+  const [open, setOpen] = useState(false);
   return (
     <AppBar
       sx={{
@@ -28,7 +42,10 @@ const Header = () => {
       </Typography>
       <Box
         sx={{
-          display: "flex",
+          display: {
+            xs: "none",
+            md: "flex",
+          },
           flexDirection: "row",
 
           padding: "0px",
@@ -50,19 +67,69 @@ const Header = () => {
           <Link href="/sponsors">SPONSORS</Link>
         </Typography>
       </Box>
-      <Link href="/register">
-        <Button
-          variant="contained"
-          sx={{ borderRadius: "20px", marginRight: "10px" }}
-        >
-          Register
-        </Button>
+      <Box>
+        <Link href="/register">
+          <Button
+            variant="contained"
+            sx={{ borderRadius: "20px", marginRight: "10px" }}
+          >
+            Register
+          </Button>
 
-        {/* <Link href="/login"> */}
-        <Button variant="contained" sx={{ borderRadius: "20px" }}>
-          Login
-        </Button>
-      </Link>
+          {/* <Link href="/login"> */}
+          <Button variant="contained" sx={{ borderRadius: "20px" }}>
+            Login
+          </Button>
+        </Link>
+        <IconButton sx={{ display: { md: "none" } }}>
+          <MenuIcon onClick={() => setOpen(true)} />
+        </IconButton>
+        <SwipeableDrawer
+          PaperProps={{
+            sx: {
+              backgroundColor: "#f3eee8",
+              width: "200px",
+            },
+          }}
+          open={open}
+          anchor="right"
+          onOpen={() => {
+            setOpen(true);
+          }}
+          onClose={() => {
+            setOpen(false);
+          }}
+        >
+          <div>
+            <IconButton>
+              <ChevronRightIcon onClick={() => setOpen(false)} />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            <ListItem>
+              <Typography variant="nav">
+                <Link href="/theme">THEME</Link>
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="nav">
+                <Link href="/events">EVENTS</Link>
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="nav">
+                <Link href="/speakers">SPEAKERS</Link>
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="nav">
+                <Link href="/sponsors">SPONSORS</Link>
+              </Typography>
+            </ListItem>
+          </List>
+        </SwipeableDrawer>
+      </Box>
     </AppBar>
   );
 };
