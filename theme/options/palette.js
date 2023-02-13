@@ -1,8 +1,8 @@
 const paletteOptions = {
-	mode: 'light',
-	primary: {
-		main: '#ED1D24'
-	}
-}
+  mode: "light",
+  primary: {
+    main: "#ED1D24",
+  },
+};
 
-export default paletteOptions
+export default paletteOptions;

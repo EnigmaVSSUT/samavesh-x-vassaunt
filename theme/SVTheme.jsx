@@ -1,16 +1,10 @@
-import { ThemeProvider } from "@mui/material"
-import useSVTheme from "./useSVTheme"
+import { ThemeProvider } from "@mui/material";
+import useSVTheme from "./useSVTheme";
 
 const SVTheme = ({ children }) => {
-	const theme = useSVTheme()
+  const theme = useSVTheme();
 
-	return (
-		<ThemeProvider
-			theme={theme}
-		>
-			{children}
-		</ThemeProvider>
-	)
-}
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};
 
-export default SVTheme
+export default SVTheme;
