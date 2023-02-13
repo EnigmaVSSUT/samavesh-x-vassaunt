@@ -15,7 +15,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Link from "next/link";
 import { useState } from "react";
 const Header = () => {
-  const [open, useOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <AppBar
       sx={{
@@ -82,7 +82,7 @@ const Header = () => {
           </Button>
         </Link>
         <IconButton sx={{ display: { md: "none" } }}>
-          <MenuIcon onClick={() => useOpen(true)} />
+          <MenuIcon onClick={() => setOpen(true)} />
         </IconButton>
         <SwipeableDrawer
           PaperProps={{
@@ -93,12 +93,16 @@ const Header = () => {
           }}
           open={open}
           anchor="right"
-          onOpen={() => useOpen(true)}
-          onClose={() => useOpen(false)}
+          onOpen={() => {
+            setOpen(true);
+          }}
+          onClose={() => {
+            setOpen(false);
+          }}
         >
           <div>
             <IconButton>
-              <ChevronRightIcon onClick={() => useOpen(false)} />
+              <ChevronRightIcon onClick={() => setOpen(false)} />
             </IconButton>
           </div>
           <Divider />
