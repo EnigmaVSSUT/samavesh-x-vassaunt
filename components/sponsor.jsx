@@ -27,7 +27,7 @@ const Sponsor = () => {
         <Typography variant="h1" sx={{ fontSize: "45px", lineHeight: "52px" }}>
           Sponsors
         </Typography>
-        <Sponsorlist />
+        {/* <Sponsorlist />   */}
         <Box
           sx={{
             display: "flex",

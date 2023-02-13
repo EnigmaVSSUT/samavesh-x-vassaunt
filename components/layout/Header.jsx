@@ -68,19 +68,28 @@ const Header = () => {
         </Typography>
       </Box>
       <Box>
-        <Link href="/register">
-          <Button
-            variant="contained"
-            sx={{ borderRadius: "20px", marginRight: "10px" }}
-          >
-            Register
-          </Button>
+        <Box
+          sx={{
+            display: {
+              xs: "none",
+              md: "flex",
+            },
+          }}
+        >
+          <Link href="/register">
+            <Button
+              variant="contained"
+              sx={{ borderRadius: "20px", marginRight: "10px" }}
+            >
+              Register
+            </Button>
 
-          {/* <Link href="/login"> */}
-          <Button variant="contained" sx={{ borderRadius: "20px" }}>
-            Login
-          </Button>
-        </Link>
+            {/* <Link href="/login"> */}
+            <Button variant="contained" sx={{ borderRadius: "20px" }}>
+              Login
+            </Button>
+          </Link>
+        </Box>
         <IconButton sx={{ display: { md: "none" } }}>
           <MenuIcon onClick={() => setOpen(true)} />
         </IconButton>
@@ -126,6 +135,21 @@ const Header = () => {
               <Typography variant="nav">
                 <Link href="/sponsors">SPONSORS</Link>
               </Typography>
+            </ListItem>
+            <ListItem>
+              <Link href="/register">
+                <Button
+                  variant="contained"
+                  sx={{ borderRadius: "20px", marginRight: "10px" }}
+                >
+                  Register
+                </Button>
+              </Link>
+
+              {/* <Link href="/login"> */}
+              <Button variant="contained" sx={{ borderRadius: "20px" }}>
+                Login
+              </Button>
             </ListItem>
           </List>
         </SwipeableDrawer>
