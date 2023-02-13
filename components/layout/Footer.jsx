@@ -29,9 +29,15 @@ const Footer = () => {
         <Container
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: {
+              xs: "column",
+              md: "row",
+            },
             justifyContent: "space-between",
-            alignItems: "flex-start",
+            alignItems: {
+              xs: "center",
+              md: "flex-start",
+            },
             padding: "32px",
             gap: "10px",
             color: "#ffffff",
@@ -43,7 +49,14 @@ const Footer = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "flex-start",
+              alignItems: {
+                xs: "center",
+                md: "flex-start",
+              },
+              marginTop: {
+                xs: "10px",
+                md: "0px",
+              },
               padding: "0px",
               gap: "60px",
             }}

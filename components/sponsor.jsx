@@ -1,6 +1,7 @@
 import { EmailOutlined } from "@mui/icons-material";
 import { Stack, Typography, Box, Container, Button } from "@mui/material";
 import Link from "next/link";
+import Sponsorlist from "./sponsorlist";
 const Sponsor = () => {
   return (
     <Stack
@@ -26,6 +27,7 @@ const Sponsor = () => {
         <Typography variant="h1" sx={{ fontSize: "45px", lineHeight: "52px" }}>
           Sponsors
         </Typography>
+        <Sponsorlist />
         <Box
           sx={{
             display: "flex",
@@ -40,7 +42,10 @@ const Sponsor = () => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: {
+                xs: "column",
+                md: "row",
+              },
               alignItems: "flex-start",
               padding: "0px",
               gap: "40px",
@@ -66,6 +71,7 @@ const Sponsor = () => {
               porttitor lacus luctus accumsan tortor posuere ac. Amet est
               placerat in egestas erat imperdiet sed euismod nisi. Nulla aliquet
               porttitor lacus luctus accumsan tortor posuere ac.
+              <br />
             </Typography>
           </Box>
           <Link href="/login">
@@ -77,6 +83,7 @@ const Sponsor = () => {
                 fontFamily: "Product sans",
                 textTransform: "inherit",
                 fontWeight: "600",
+                marginTop: "10px",
               }}
             >
               <EmailOutlined sx={{ marginRight: "5px" }} /> Contact Us
