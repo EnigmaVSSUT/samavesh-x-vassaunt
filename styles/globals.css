@@ -36,6 +36,15 @@ a {
   position: relative;
   bottom: 9.5vh;
 }
+@media (max-width: 1070px) {
+  .marquee-container {
+    position: relative;
+    bottom: -0.5vh;
+  }
+}
+#mr {
+  margin-right: 5px;
+}
 #sub {
   vertical-align: sub;
   font-size: 1.2rem;
@@ -50,4 +59,8 @@ body {
 
 #black {
   -webkit-text-stroke-color: #000000;
+}
+#speak {
+  height: 32vw;
+  width: 28vw;
 }
