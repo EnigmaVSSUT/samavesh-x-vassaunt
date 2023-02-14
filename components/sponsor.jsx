@@ -1,5 +1,12 @@
 import { EmailOutlined } from "@mui/icons-material";
-import { Stack, Typography, Box, Container, Button } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  Box,
+  Container,
+  Button,
+  Avatar,
+} from "@mui/material";
 import Link from "next/link";
 import Sponsorlist from "./sponsorlist";
 const Sponsor = () => {
@@ -27,6 +34,47 @@ const Sponsor = () => {
         <Typography variant="h1" sx={{ fontSize: "45px", lineHeight: "52px" }}>
           Sponsors
         </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            width: "80%",
+            justifyContent: "space-around",
+            alignItems: "center",
+            flexWrap: "wrap",
+            rowGap: {
+              xs: "20px",
+            },
+            columnGap: {
+              xs: "10px",
+              md: "none",
+            },
+          }}
+        >
+          <Avatar
+            sx={{ height: "100px", width: "100px", fontSize: "50px" }}
+            src="/clubs/6.png"
+          >
+            S
+          </Avatar>
+          <Avatar
+            sx={{ height: "100px", width: "100px", fontSize: "50px" }}
+            src="/clubs/4.png"
+          >
+            N
+          </Avatar>
+          <Avatar
+            sx={{ height: "100px", width: "100px", fontSize: "50px" }}
+            src="/clubs/3.png"
+          >
+            A
+          </Avatar>
+          <Avatar
+            sx={{ height: "100px", width: "100px", fontSize: "50px" }}
+            src="/clubs/2.png"
+          >
+            P
+          </Avatar>
+        </Box>
         {/* <Sponsorlist />   */}
         <Box
           sx={{

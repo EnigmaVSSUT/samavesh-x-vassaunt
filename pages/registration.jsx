@@ -9,7 +9,9 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { useState, useEffect } from "react";
 const Form = () => {
+  const [reg, setReg] = useState(false);
   return (
     <Stack
       maxWidth="550px"
@@ -43,14 +45,40 @@ const Form = () => {
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
           >
-            <FormControlLabel value="VSSUT" control={<Radio />} label="VSSUT" />
+            <FormControlLabel
+              value="VSSUT"
+              control={
+                <Radio
+                  onChange={(e) => {
+                    setReg(e.target.checked);
+                  }}
+                />
+              }
+              label="VSSUT"
+            />
             <FormControlLabel
               value="Non-VSSUT"
-              control={<Radio />}
+              control={
+                <Radio
+                  onChange={(e) => {
+                    setReg(!e.target.checked);
+                  }}
+                />
+              }
               label="Non-VSSUT"
             />
           </RadioGroup>
         </FormControl>
+        <TextField
+          required
+          id="regno"
+          label="Registration Number"
+          variant="outlined"
+          sx={{
+            marginTop: "10px",
+            display: !reg ? "none" : "block",
+          }}
+        />
       </Stack>
       <Button variant="contained">Register</Button>
     </Stack>

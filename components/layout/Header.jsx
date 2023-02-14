@@ -64,7 +64,7 @@ const Header = () => {
           <Link href="/events">EVENTS</Link>
         </Typography>
         <Typography variant="nav">
-          <Link href="/#speakers">SPEAKERS</Link>
+          <Link href="/#speakers">GUESTS</Link>
         </Typography>
         <Typography variant="nav">
           <Link href="/#sponsors">SPONSORS</Link>
@@ -86,8 +86,9 @@ const Header = () => {
             >
               Register
             </Button>
+          </Link>
 
-            {/* <Link href="/login"> */}
+          <Link href="/login">
             <Button variant="contained" sx={{ borderRadius: "20px" }}>
               Login
             </Button>
@@ -121,27 +122,37 @@ const Header = () => {
           <List>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/#home">HOME</Link>
+                <Link href="/#home" onClick={() => setOpen(false)}>
+                  HOME
+                </Link>
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/#theme">THEME</Link>
+                <Link href="/#theme" onClick={() => setOpen(false)}>
+                  THEME
+                </Link>
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/events">EVENTS</Link>
+                <Link href="/events" onClick={() => setOpen(false)}>
+                  EVENTS
+                </Link>
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/#speakers">SPEAKERS</Link>
+                <Link href="/#speakers" onClick={() => setOpen(false)}>
+                  GUESTS
+                </Link>
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/#sponsors">SPONSORS</Link>
+                <Link href="/#sponsors" onClick={() => setOpen(false)}>
+                  SPONSORS
+                </Link>
               </Typography>
             </ListItem>
             <ListItem>
@@ -155,10 +166,15 @@ const Header = () => {
                 </Button>
               </Link>
 
-              {/* <Link href="/login"> */}
-              <Button variant="contained" sx={{ borderRadius: "20px" }}>
-                Login
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="contained"
+                  sx={{ borderRadius: "20px" }}
+                  onClick={() => setOpen(false)}
+                >
+                  Login
+                </Button>
+              </Link>
             </ListItem>
           </List>
         </SwipeableDrawer>
