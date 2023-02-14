@@ -1,13 +1,19 @@
 import { Stack } from "@mui/system";
 import Typography from "@mui/material/Typography";
-import { Avatar } from "@mui/material";
+import { Avatar, Grid } from "@mui/material";
+import ClubCard from "@/components/ClubCard";
 
 const Clubs = () => {
   return (
-    <Stack sx={{ paddingTop: "50px" }}>
+    <Stack sx={{ paddingTop: "50px", margin: { md: "0 auto", sm: "0 auto" } }}>
       <Stack
-        direction="row"
-        sx={{ justifyContent: "space-between", padding: "20px" }}
+        sx={{
+          justifyContent: "space-between",
+          padding: "20px",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          margin: { xs: "0 auto", md: "0px" },
+        }}
       >
         <Stack>
           <Typography
@@ -27,12 +33,18 @@ const Clubs = () => {
             sx={{
               fontFamily: "BentonSans Comp Black",
               textTransform: "uppercase",
+              marginBottom: "18px",
             }}
           >
             OFFICIAL WEB AND CODING CLUB
           </Typography>
         </Stack>
-        <Stack sx={{ alignItems: "flex-start" }}>
+        <Stack
+          alignItems={{
+            xs: "center",
+            md: "start",
+          }}
+        >
           <Typography
             variant="h4"
             color="initial"
@@ -44,7 +56,13 @@ const Clubs = () => {
           >
             POINT OF CONTACT
           </Typography>
-          <Stack direction="row">
+          <Stack
+            sx={{
+              display: "flex",
+              flexDirection: { lg: "row", md: "row", sm: "coloumn" },
+              margin: { md: "0", sm: "0 auto" },
+            }}
+          >
             <Stack sx={{ alignItems: "center", marginRight: "10px" }}>
               <Avatar>N</Avatar>
               <Typography variant="subtitle1" color="initial">
@@ -75,93 +93,18 @@ const Clubs = () => {
           </Stack>
         </Stack>
       </Stack>
-      <Stack sx={{ padding: "15px" }}>
+      <Stack
+        sx={{ padding: "15px" }}
+        alignItems={{ xs: "center", md: "start" }}
+      >
         <Typography variant="h4" color="initial" marginBottom="3vmax">
           Events
         </Typography>
-        <Stack direction="row" gap="4vmax">
-          <Stack
-            sx={{
-              width: "300px",
-              height: "200px",
-              backgroundColor: "red",
-              padding: "10px",
-              border: "3px solid black",
-              justifyContent: "space-between",
-            }}
-          >
-            <Stack>
-              <Typography variant="h4" color="white">
-                Nox Code
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                About club
-              </Typography>
-            </Stack>
-            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-              <Typography variant="subtitle1" color="white">
-                Venue: E-Learning Center
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                Time: 9.30AM
-              </Typography>
-            </Stack>
-          </Stack>
-          <Stack
-            sx={{
-              width: "300px",
-              height: "200px",
-              backgroundColor: "red",
-              padding: "10px",
-              border: "3px solid black",
-              justifyContent: "space-between",
-            }}
-          >
-            <Stack>
-              <Typography variant="h4" color="white">
-                Nox Code
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                About club
-              </Typography>
-            </Stack>
-            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-              <Typography variant="subtitle1" color="white">
-                Venue: E-Learning Center
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                Time: 9.30AM
-              </Typography>
-            </Stack>
-          </Stack>
-          <Stack
-            sx={{
-              width: "300px",
-              height: "200px",
-              backgroundColor: "red",
-              padding: "10px",
-              border: "3px solid black",
-              justifyContent: "space-between",
-            }}
-          >
-            <Stack>
-              <Typography variant="h4" color="white">
-                Nox Code
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                About club
-              </Typography>
-            </Stack>
-            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-              <Typography variant="subtitle1" color="white">
-                Venue: E-Learning Center
-              </Typography>
-              <Typography variant="subtitle1" color="white">
-                Time: 9.30AM
-              </Typography>
-            </Stack>
-          </Stack>
-        </Stack>
+        <Grid container spacing={2} maxWidth="100vw" justifyContent="center">
+          <ClubCard />
+          <ClubCard />
+          <ClubCard />
+        </Grid>
       </Stack>
     </Stack>
   );
