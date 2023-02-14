@@ -38,7 +38,7 @@ const Header = () => {
           fontSize: "1.7rem",
         }}
       >
-        SAMAVESH X VASSAUNT
+        <Link href="/#home"> SAMAVESH X VASSAUNT</Link>
       </Typography>
       <Box
         sx={{
@@ -54,6 +54,9 @@ const Header = () => {
           alignItems: "center",
         }}
       >
+        <Typography variant="nav">
+          <Link href="/#home">HOME</Link>
+        </Typography>
         <Typography variant="nav">
           <Link href="/#theme">THEME</Link>
         </Typography>
@@ -116,6 +119,11 @@ const Header = () => {
           </div>
           <Divider />
           <List>
+            <ListItem>
+              <Typography variant="nav">
+                <Link href="/#home">HOME</Link>
+              </Typography>
+            </ListItem>
             <ListItem>
               <Typography variant="nav">
                 <Link href="/#theme">THEME</Link>

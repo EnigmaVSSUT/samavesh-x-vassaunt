@@ -33,6 +33,11 @@ const TabPanel = () => {
       variant="scrollable"
       scrollButtons
       allowScrollButtonsMobile
+      sx={{
+        "& .MuiTabs-scrollButtons": {
+          width: "20px",
+        },
+      }}
     >
       <Tab
         label={
