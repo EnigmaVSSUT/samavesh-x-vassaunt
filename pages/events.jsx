@@ -64,6 +64,59 @@ const TabPanel = () => {
   );
 };
 
+const TabPanelType = () => {
+  const [typeActiveTab, setTypeActiveTab] = useEventTimelineStore((state) => [
+    state.typeActiveTab,
+    state.setTypeActiveTab,
+  ]);
+  // const theme = useTheme()
+  // const greaterThanLg = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
+  //   noSsr: true,
+  // });
+
+  const handleChange = (e, v) => {
+    setTypeActiveTab(v);
+  };
+
+  return (
+    <Tabs
+      orientation="horizontal"
+      value={typeActiveTab}
+      onChange={handleChange}
+      variant="scrollable"
+      scrollButtons
+      allowScrollButtonsMobile
+      sx={{
+        "& .MuiTabs-scrollButtons": {
+          width: "20px",
+        },
+      }}
+    >
+      <Tab
+        label={
+          <Typography variant={typeActiveTab === 0 ? "ACH2" : "ACH3"}>
+            Technical
+          </Typography>
+        }
+      />
+      <Tab
+        label={
+          <Typography variant={typeActiveTab === 1 ? "ACH2" : "ACH3"}>
+            Cultural
+          </Typography>
+        }
+      />
+      <Tab
+        label={
+          <Typography variant={typeActiveTab === 2 ? "ACH2" : "ACH3"}>
+            Fun
+          </Typography>
+        }
+      />
+    </Tabs>
+  );
+};
+
 const Day = ({ day }) => {
   return (
     <Typography
@@ -164,7 +217,7 @@ const Events = () => {
       top="100px"
     >
       <Typography variant="ACH1" textAlign="center">
-        Event Timeline
+        <TabPanelType />
       </Typography>
       <Stack
         direction={{
