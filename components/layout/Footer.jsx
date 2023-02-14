@@ -70,16 +70,35 @@ const Footer = () => {
                 gap: "8px",
               }}
             >
-              <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
+              {" "}
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
+                <Link href="/#home">HOME</Link>
+              </Typography>
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 <Link href="/#theme">THEME</Link>
               </Typography>
-              <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 <Link href="/events">EVENTS</Link>
               </Typography>
-              <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 <Link href="/#speakers">SPEAKERS</Link>
               </Typography>
-              <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 <Link href="/#sponsors">SPONSORS</Link>
               </Typography>
             </Box>
