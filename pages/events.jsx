@@ -134,7 +134,7 @@ const TabContent = () => {
       flexGrow={1}
       sx={{
         padding: {
-          xs: "0px",
+          xs: "20px",
           md: "32px",
         },
       }}
@@ -151,7 +151,7 @@ const Events = () => {
     <Stack
       sx={{
         padding: {
-          xs: "0px",
+          xs: "20px",
           md: "32px",
         },
       }}
@@ -168,7 +168,7 @@ const Events = () => {
         }}
         sx={{
           padding: {
-            xs: "0px",
+            xs: "20px",
             md: "32px",
           },
         }}
