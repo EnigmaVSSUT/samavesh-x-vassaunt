@@ -141,6 +141,7 @@ const Header = () => {
                 <Button
                   variant="contained"
                   sx={{ borderRadius: "20px", marginRight: "10px" }}
+                  onClick={() => setOpen(false)}
                 >
                   Register
                 </Button>
