@@ -93,10 +93,16 @@ const Footer = () => {
                 gap: "13px",
               }}
             >
-              <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 FOLLOW OUR SOCIALS
               </Typography>
-              <Typography variant="nav" sx={{ fontSize: "1.1rem" }}>
+              <Typography
+                variant="nav"
+                sx={{ fontSize: { xs: "1rem", md: "1.1rem" } }}
+              >
                 <Link href="https://instagram.com/samavesh.vssut?igshid=YmMyMTA2M2Y=">
                   <InstagramIcon />
                 </Link>
