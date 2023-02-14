@@ -3,7 +3,13 @@ import { Container } from "@mui/system";
 import Countdown, { zeroPad } from "react-countdown";
 import { HydrationProvider, Server, Client } from "react-hydration-provider";
 const Completionist = () => (
-  <Typography sx={{ fontSize: "75px", color: "#C0000A", fontWeight: "900" }}>
+  <Typography
+    sx={{
+      fontSize: "75px",
+      color: "#C0000A",
+      fontWeight: { xs: "400", md: "900" },
+    }}
+  >
     The Fest is ON!
   </Typography>
 );
@@ -15,7 +21,11 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
     // Render a countdown
     return (
       <Typography
-        sx={{ fontSize: "75px", color: "#C0000A", fontWeight: "900" }}
+        sx={{
+          fontSize: { xs: "40px", md: "75px" },
+          color: "#C0000A",
+          fontWeight: { xs: "400!important", md: "900" },
+        }}
       >
         {zeroPad(days)}
         <span id="sub">days</span>
@@ -57,7 +67,7 @@ const Timer = () => {
             <Typography
               sx={{
                 color: "#C0000A",
-                fontWeight: "900",
+                fontWeight: { xs: "400", md: "900" },
                 fontSize: "2.4rem",
                 lineHeight: "40px",
               }}
