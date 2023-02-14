@@ -15,7 +15,11 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
     // Render a countdown
     return (
       <Typography
-        sx={{ fontSize: "75px", color: "#C0000A", fontWeight: "900" }}
+        sx={{
+          fontSize: { xs: "40px", md: "75px" },
+          color: "#C0000A",
+          fontWeight: "900",
+        }}
       >
         {zeroPad(days)}
         <span id="sub">days</span>

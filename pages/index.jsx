@@ -3,30 +3,60 @@ import Typography from "@mui/material/Typography";
 import Marqueesv from "@/components/marquee";
 import Timersv from "@/components/timer";
 import Sponsor from "@/components/sponsor";
-
+import { Box } from "@mui/system";
+import Speakers from "@/components/speakers";
 const Hero = () => {
   return (
-    <div className={styles.hero}>
-      <div className={styles.intro}>
+    <Box
+      className={styles.hero}
+      sx={{
+        marginTop: {
+          xs: "30px",
+          lg: "0px",
+        },
+      }}
+    >
+      <Box
+        className={styles.intro}
+        sx={{
+          justifyContent: {
+            xs: "center",
+            lg: "space-between",
+          },
+        }}
+      >
         <Typography
           variant="h3"
           color="initial"
-          maxWidth={"380px"}
-          sx={{ fontSize: "2.8rem" }}
+          sx={{
+            fontSize: {
+              xs: "2.5rem",
+              md: "2.8rem",
+            },
+            maxWidth: { xs: "300px", md: "380px" },
+          }}
         >
           THE ANNUAL
           <br />
           TECHNO-CULTURAL
           <br />
           FEST OF VSSUT
-          <br />
           <Timersv />
         </Typography>
-        <img src="./theme.png" alt="Fest Poster" />
-      </div>
+        <img src="./theme.png" alt="Fest Poster" className={styles.poster1} />
+      </Box>
       <Marqueesv />
       <div className={styles.theme}>
-        <div className={styles.text}>
+        <Box
+          className={styles.text}
+          sx={{
+            flexDirection: {
+              xs: "column",
+              md: "row",
+            },
+          }}
+        >
+          <div id="theme"></div>
           <Typography variant="h3" color="initial" sx={{ fontSize: "2.5rem" }}>
             MARVEL AT VSSUT
           </Typography>
@@ -43,11 +73,14 @@ const Hero = () => {
             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore.
           </Typography>
-        </div>
+        </Box>
         <img src="./festposter.png" alt="Theme" className={styles.poster} />
       </div>
+      <div id="speakers"></div>
+      <Speakers />
+      <div id="sponsors"></div>
       <Sponsor />
-    </div>
+    </Box>
   );
 };
 export default Hero;

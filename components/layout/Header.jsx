@@ -55,32 +55,41 @@ const Header = () => {
         }}
       >
         <Typography variant="nav">
-          <Link href="/theme">THEME</Link>
+          <Link href="/#theme">THEME</Link>
         </Typography>
         <Typography variant="nav">
           <Link href="/events">EVENTS</Link>
         </Typography>
         <Typography variant="nav">
-          <Link href="/speakers">SPEAKERS</Link>
+          <Link href="/#speakers">SPEAKERS</Link>
         </Typography>
         <Typography variant="nav">
-          <Link href="/sponsors">SPONSORS</Link>
+          <Link href="/#sponsors">SPONSORS</Link>
         </Typography>
       </Box>
       <Box>
-        <Link href="/register">
-          <Button
-            variant="contained"
-            sx={{ borderRadius: "20px", marginRight: "10px" }}
-          >
-            Register
-          </Button>
+        <Box
+          sx={{
+            display: {
+              xs: "none",
+              md: "flex",
+            },
+          }}
+        >
+          <Link href="/registration">
+            <Button
+              variant="contained"
+              sx={{ borderRadius: "20px", marginRight: "10px" }}
+            >
+              Register
+            </Button>
 
-          {/* <Link href="/login"> */}
-          <Button variant="contained" sx={{ borderRadius: "20px" }}>
-            Login
-          </Button>
-        </Link>
+            {/* <Link href="/login"> */}
+            <Button variant="contained" sx={{ borderRadius: "20px" }}>
+              Login
+            </Button>
+          </Link>
+        </Box>
         <IconButton sx={{ display: { md: "none" } }}>
           <MenuIcon onClick={() => setOpen(true)} />
         </IconButton>
@@ -109,7 +118,7 @@ const Header = () => {
           <List>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/theme">THEME</Link>
+                <Link href="/#theme">THEME</Link>
               </Typography>
             </ListItem>
             <ListItem>
@@ -119,13 +128,28 @@ const Header = () => {
             </ListItem>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/speakers">SPEAKERS</Link>
+                <Link href="/#speakers">SPEAKERS</Link>
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="nav">
-                <Link href="/sponsors">SPONSORS</Link>
+                <Link href="/#sponsors">SPONSORS</Link>
               </Typography>
+            </ListItem>
+            <ListItem>
+              <Link href="/registration">
+                <Button
+                  variant="contained"
+                  sx={{ borderRadius: "20px", marginRight: "10px" }}
+                >
+                  Register
+                </Button>
+              </Link>
+
+              {/* <Link href="/login"> */}
+              <Button variant="contained" sx={{ borderRadius: "20px" }}>
+                Login
+              </Button>
             </ListItem>
           </List>
         </SwipeableDrawer>
