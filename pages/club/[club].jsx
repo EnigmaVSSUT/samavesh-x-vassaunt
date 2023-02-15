@@ -9,19 +9,19 @@ import { Typography, Grid } from "@mui/material";
 
 const ClubPage = () => {
   const router = useRouter();
-  const [events, getClubEvents] = useClubEvents((state) => [
-    state.events,
-    state.getClubEvents,
+  const [club, getClubData] = useClubEvents((state) => [
+    state.club,
+    state.getClubData,
   ]);
 
   useEffect(() => {
     if (!router.isReady) return;
-    getClubEvents(router.query.club);
+    getClubData(router.query.club);
   }, [router.isReady]);
 
   useEffect(() => {
-    console.log(events);
-  }, [events]);
+    console.log(club);
+  }, [club]);
 
   return (
     <>
@@ -33,8 +33,8 @@ const ClubPage = () => {
           Events
         </Typography>
         <Grid container spacing={2} maxWidth="100vw" justifyContent="center">
-          {events &&
-            events.map((e) => (
+          {club.events &&
+            club.events.map((e) => (
               <Grid Item xs={8} sm={6} md={4} lg={3} margin="8px">
                 <ClubCard
                   title={e.title}
