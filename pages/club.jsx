@@ -2,6 +2,7 @@ import { Stack } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import { Avatar, Grid } from "@mui/material";
 import ClubCard from "@/components/ClubCard";
+import club from "../lib/data/club";
 
 const Clubs = () => {
   return (
@@ -101,8 +102,6 @@ const Clubs = () => {
           Events
         </Typography>
         <Grid container spacing={2} maxWidth="100vw" justifyContent="center">
-          <ClubCard />
-          <ClubCard />
           <ClubCard />
         </Grid>
       </Stack>
