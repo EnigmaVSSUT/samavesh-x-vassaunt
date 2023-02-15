@@ -35,7 +35,7 @@ const ClubPage = () => {
         <Grid container spacing={2} maxWidth="100vw" justifyContent="center">
           {club.events &&
             club.events.map((e) => (
-              <Grid Item xs={8} sm={6} md={4} lg={3} margin="8px">
+              <Grid Item xs={8} sm={6} md={4} lg={3} key={e.title} margin="8px">
                 <ClubCard
                   title={e.title}
                   venue={e.venue}
