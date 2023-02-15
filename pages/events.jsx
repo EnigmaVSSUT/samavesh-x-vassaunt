@@ -113,6 +113,13 @@ const TabPanelType = () => {
           </Typography>
         }
       />
+      <Tab
+        label={
+          <Typography variant={typeActiveTab === 3 ? "ACH2" : "ACH3"}>
+            EXHIBITION
+          </Typography>
+        }
+      />
     </Tabs>
   );
 };
