@@ -83,7 +83,10 @@ const ClubPage = () => {
             }}
           >
             {club.poc.map((e) => (
-              <Stack sx={{ alignItems: "center", marginRight: "10px" }}>
+              <Stack
+                sx={{ alignItems: "center", marginRight: "10px" }}
+                key={e.name}
+              >
                 <Avatar>N</Avatar>
                 <Typography variant="subtitle1" color="initial">
                   {e.name}
