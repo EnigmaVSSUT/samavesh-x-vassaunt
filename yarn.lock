@@ -1080,6 +1080,11 @@ caniuse-lite@^1.0.30001406:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001450.tgz#022225b91200589196b814b51b1bbe45144cf74f"
   integrity sha512-qMBmvmQmFXaSxexkjjfMvD5rnDL0+m+dUMZKoDYsGG8iZN29RuYh9eRoMvKsT6uMAWlyUUGDEQGJJYjzCIO9ew==
 
+caniuse-lite@^1.0.30001439:
+  version "1.0.30001453"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001453.tgz#6d3a1501622bf424a3cee5ad9550e640b0de3de8"
+  integrity sha512-R9o/uySW38VViaTrOtwfbFEiBFUh7ST3uIG4OEymIG3/uKdHDO4xk/FaqfUw0d+irSUyFPy3dZszf9VvSTPnsA==
+
 chain-function@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/chain-function/-/chain-function-1.0.1.tgz#c63045e5b4b663fb86f1c6e186adaf1de402a1cc"
@@ -2543,6 +2548,16 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+material-react-toastify@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/material-react-toastify/-/material-react-toastify-2.0.1.tgz#9562cf0aab2dd5dc5a646f2791014e87831399c3"
+  integrity sha512-uk8A2prJQ/1uFpiEPBgRgP+iWlTcqJpD6tz6xOPYNiCCEQGC6JP42Ae3IntHmY+Uni/wgsU7OxgkOiGVrK7Rkg==
+  dependencies:
+    caniuse-lite "^1.0.30001439"
+    clsx "^1.1.1"
+    prop-types "^15.7.2"
+    react-transition-group "^4.4.1"
+
 material-ui-password-field@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/material-ui-password-field/-/material-ui-password-field-2.1.2.tgz#9f5abcc540a9bf46f8def3e2eea09bba905c8db6"
@@ -3033,7 +3048,7 @@ react-transition-group@^1.2.1:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-transition-group@^4.4.5:
+react-transition-group@^4.4.1, react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
   integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
