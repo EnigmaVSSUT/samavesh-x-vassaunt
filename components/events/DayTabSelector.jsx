@@ -27,6 +27,7 @@ const DayTabSelector = () => {
         "& .MuiTabs-scrollButtons": {
           width: "20px",
         },
+        width: greaterThanLg ? "150px" : "auto",
       }}
     >
       <Tab label={<Typography variant="ACH6">DAY : 1</Typography>} />

@@ -16,7 +16,16 @@ const CategoryTabSelector = () => {
   };
 
   return (
-    <Tabs value={category} onChange={handleChange} variant="scrollable">
+    <Tabs
+      value={category}
+      onChange={handleChange}
+      variant="scrollable"
+      scrollButtons
+      allowScrollButtonsMobile
+      sx={{
+        width: "100%",
+      }}
+    >
       <Tab label={<Typography variant="ACH6">Technical</Typography>} />
       <Tab label={<Typography variant="ACH6">Cultural</Typography>} />
       <Tab label={<Typography variant="ACH6">Category</Typography>} />
