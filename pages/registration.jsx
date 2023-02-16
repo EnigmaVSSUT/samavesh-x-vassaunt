@@ -12,6 +12,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+
 import { useState, useEffect } from "react";
 
 const Form = () => {
@@ -56,6 +57,7 @@ const Form = () => {
     border: "1px solid ",
     boxShadow: 24,
     p: 4,
+
   };
 
   return (
@@ -70,13 +72,32 @@ const Form = () => {
         Registration Form
       </Typography>
       <Stack direction="row" gap="30px" sx={{ marginTop: "15px" }}>
-        <TextField required id="name" label="Name" variant="outlined" />
-        <TextField required id="name" label="Email" variant="outlined" />
+        <TextField
+          required
+          id="name"
+          label="Name"
+          variant="outlined"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <TextField
+          required
+          id="email"
+          label="Email"
+          variant="outlined"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
       </Stack>
       <Stack sx={{ marginTop: "10px" }}>
         <TextField
           required
-          id="name"
+          id="password"
+          value={password}
           label="Password"
           variant="outlined"
           paddingTop="10px"
@@ -89,8 +110,10 @@ const Form = () => {
           variant="outlined"
           helperText="Password should alphanumeric and atleast 8 characters"
           paddingTop="10px"
+
           type="password"
           sx={{ marginTop: "1rem" }}
+
         />
         <FormControl sx={{ marginTop: "10px" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">
@@ -107,7 +130,9 @@ const Form = () => {
                 <Radio
                   onChange={(e) => {
                     setReg(e.target.checked);
+
                     setCollege(!e.target.checked);
+
                   }}
                 />
               }
@@ -119,7 +144,9 @@ const Form = () => {
                 <Radio
                   onChange={(e) => {
                     setReg(!e.target.checked);
+
                     setCollege(e.target.checked);
+
                   }}
                 />
               }
@@ -132,9 +159,41 @@ const Form = () => {
           id="regno"
           label="Registration Number"
           variant="outlined"
+          value={regnum}
           sx={{
             marginTop: "10px",
             display: !reg ? "none" : "block",
+          }}
+          onChange={(e) => {
+            setRegnum(e.target.value);
+          }}
+        />
+        <TextField
+          required
+          id="institution-name"
+          label="Institution Name"
+          value={college}
+          variant="outlined"
+          sx={{
+            marginTop: "10px",
+            display: nonvssut ? "block" : "none",
+          }}
+          onChange={(e) => {
+            setCollege(e.target.value);
+          }}
+        />
+        <TextField
+          required
+          id="phone-number"
+          value={phnnum}
+          label="Contact Number"
+          variant="outlined"
+          sx={{
+            marginTop: "10px",
+            display: nonvssut ? "block" : "none",
+          }}
+          onChange={(e) => {
+            setPhnnum(e.target.value);
           }}
         />
         <TextField
@@ -148,6 +207,7 @@ const Form = () => {
           }}
         />
       </Stack>
+
       <Button onClick={handleOpen} variant="contained">
         Register
       </Button>
@@ -180,6 +240,7 @@ const Form = () => {
           </Button>
         </Box>
       </Modal>
+
     </Stack>
   );
 };

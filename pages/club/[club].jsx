@@ -1,12 +1,30 @@
+import { c } from "@/lib/data/club";
+import useClubEvents from "@/lib/store/useClubEvents";
 import { Stack } from "@mui/system";
-import Typography from "@mui/material/Typography";
-import { Avatar, Grid } from "@mui/material";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffect } from "react";
 import ClubCard from "@/components/ClubCard";
-import club from "../lib/data/club";
+import { Typography, Grid, Avatar } from "@mui/material";
 
-const Clubs = () => {
+const ClubPage = () => {
+  const router = useRouter();
+  const [club, getClubData] = useClubEvents((state) => [
+    state.club,
+    state.getClubData,
+  ]);
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    getClubData(router.query.club);
+  }, [router.isReady]);
+
+  useEffect(() => {
+    console.log(club);
+  }, [club]);
+
   return (
-    <Stack sx={{ paddingTop: "50px", margin: { md: "0 auto", sm: "0 auto" } }}>
+    <>
       <Stack
         sx={{
           justifyContent: "space-between",
@@ -26,7 +44,7 @@ const Clubs = () => {
               textTransform: "uppercase",
             }}
           >
-            ENIGMA
+            {club.name}
           </Typography>
           <Typography
             variant="h6"
@@ -37,7 +55,7 @@ const Clubs = () => {
               marginBottom: "18px",
             }}
           >
-            OFFICIAL WEB AND CODING CLUB
+            {club.about}
           </Typography>
         </Stack>
         <Stack
@@ -64,49 +82,50 @@ const Clubs = () => {
               margin: { md: "0", sm: "0 auto" },
             }}
           >
-            <Stack sx={{ alignItems: "center", marginRight: "10px" }}>
-              <Avatar>N</Avatar>
-              <Typography variant="subtitle1" color="initial">
-                SOHAM SAMANTARAY
-              </Typography>
-              <Typography variant="caption" color="initial">
-                SECRETARY
-              </Typography>
-            </Stack>
-            <Stack sx={{ alignItems: "center", marginRight: "10px" }}>
-              <Avatar>N</Avatar>
-              <Typography variant="subtitle1" color="initial">
-                SOHAM SAMANTARAY
-              </Typography>
-              <Typography variant="caption" color="initial">
-                SECRETARY
-              </Typography>
-            </Stack>
-            <Stack sx={{ alignItems: "center", marginRight: "10px" }}>
-              <Avatar>N</Avatar>
-              <Typography variant="subtitle1" color="initial">
-                SOHAM SAMANTARAY
-              </Typography>
-              <Typography variant="caption" color="initial">
-                SECRETARY
-              </Typography>
-            </Stack>
+            {club.poc.map((e) => (
+              <Stack
+                sx={{ alignItems: "center", marginRight: "10px" }}
+                key={e.name}
+              >
+                <Avatar>N</Avatar>
+                <Typography variant="subtitle1" color="initial">
+                  {e.name}
+                </Typography>
+                <Typography variant="caption" color="initial">
+                  {e.designation}
+                </Typography>
+                <Typography variant="caption" color="initial">
+                  {e.contactNo}
+                </Typography>
+              </Stack>
+            ))}
           </Stack>
         </Stack>
       </Stack>
+
       <Stack
         sx={{ padding: "15px" }}
-        alignItems={{ xs: "center", md: "start" }}
+        alignItems={{ xs: "center", sm: "center", md: "start" }}
       >
         <Typography variant="h4" color="initial" marginBottom="3vmax">
           Events
         </Typography>
         <Grid container spacing={2} maxWidth="100vw" justifyContent="center">
-          <ClubCard />
+          {club.events &&
+            club.events.map((e) => (
+              <Grid Item xs={8} sm={6} md={4} lg={3} key={e.title} margin="8px">
+                <ClubCard
+                  title={e.title}
+                  venue={e.venue}
+                  time={e.time}
+                  about={e.about}
+                />
+              </Grid>
+            ))}
         </Grid>
       </Stack>
-    </Stack>
+    </>
   );
 };
 
-export default Clubs;
+export default ClubPage;
