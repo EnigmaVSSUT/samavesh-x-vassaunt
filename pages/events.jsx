@@ -1,4 +1,7 @@
+import CategoryTabSelector from "@/components/events/CategoryTabSelector";
+import DayTabSelector from "@/components/events/DayTabSelector";
 import EventCard from "@/components/events/EventCard";
+import EventContainer from "@/components/events/EventContainer";
 import timeline from "@/lib/data/timeline";
 import useEventTimelineStore from "@/lib/store/useEventTimelineStore";
 import {
@@ -8,61 +11,9 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Grid,
 } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-
-const TabPanel = () => {
-  const [activeTab, setActiveTab] = useEventTimelineStore((state) => [
-    state.activeTab,
-    state.setActiveTab,
-  ]);
-  // const theme = useTheme()
-  const greaterThanLg = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
-    noSsr: true,
-  });
-
-  const handleChange = (e, v) => {
-    setActiveTab(v);
-  };
-
-  return (
-    <Tabs
-      orientation={greaterThanLg ? "vertical" : "horizontal"}
-      value={activeTab}
-      onChange={handleChange}
-      variant="scrollable"
-      scrollButtons
-      allowScrollButtonsMobile
-      sx={{
-        "& .MuiTabs-scrollButtons": {
-          width: "20px",
-        },
-      }}
-    >
-      <Tab
-        label={
-          <Typography variant={activeTab === 0 ? "ACH2" : "ACH3"}>
-            DAY : 1
-          </Typography>
-        }
-      />
-      <Tab
-        label={
-          <Typography variant={activeTab === 1 ? "ACH2" : "ACH3"}>
-            DAY : 2
-          </Typography>
-        }
-      />
-      <Tab
-        label={
-          <Typography variant={activeTab === 2 ? "ACH2" : "ACH3"}>
-            DAY : 3
-          </Typography>
-        }
-      />
-    </Tabs>
-  );
-};
 
 const Day = ({ day }) => {
   return (
@@ -86,71 +37,11 @@ const Day = ({ day }) => {
   );
 };
 
-const EventContainer = ({ timeline: { events, day } }) => {
-  return (
-    <AnimatePresence initial={false} mode="wait">
-      <motion.main
-        direction="row"
-        key={day}
-        initial={{
-          x: 700,
-          opacity: 0,
-          y: 0,
-        }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          y: 0,
-        }}
-        exit={{
-          x: -300,
-          opacity: 0,
-        }}
-        transition={{
-          ease: "linear",
-        }}
-        style={{
-          position: "relative",
-        }}
-      >
-        <Stack
-          direction="row"
-          gap="24px"
-          flexWrap="wrap"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-        >
-          {events.map((e) => (
-            <EventCard event={e} key={e.name} />
-          ))}
-          <Day day={day + 1} />
-        </Stack>
-      </motion.main>
-    </AnimatePresence>
-  );
-};
-
-const TabContent = () => {
-  const activeTab = useEventTimelineStore((state) => state.activeTab);
-
-  return (
-    <Stack
-      flexGrow={1}
-      sx={{
-        padding: {
-          xs: "20px",
-          md: "32px",
-        },
-      }}
-    >
-      <EventContainer timeline={timeline[activeTab]} />
-    </Stack>
-  );
-};
-
 const Events = () => {
-  const activeTab = useEventTimelineStore((state) => state.activeTab);
+  const [activeDay, events] = useEventTimelineStore((state) => [
+    state.activeDay,
+    state.events,
+  ]);
 
   return (
     <Stack
@@ -160,30 +51,29 @@ const Events = () => {
           md: "32px",
         },
       }}
-      position="sticky"
       top="100px"
     >
       <Typography variant="ACH1" textAlign="center">
         Event Timeline
       </Typography>
-      <Stack
-        direction={{
-          xs: "column",
-          lg: "row",
-        }}
-        sx={{
-          padding: {
-            xs: "20px",
-            md: "32px",
-          },
-        }}
-        alignItems={{
-          xs: "center",
-          lg: "start",
-        }}
-      >
-        <TabPanel />
-        <EventContainer timeline={timeline[activeTab]} />
+      <Stack padding="16px" gap="20px" alignItems="center" width="100%">
+        <CategoryTabSelector />
+        <Stack
+          direction={{
+            xs: "column",
+            lg: "row",
+          }}
+          sx={{
+            width: "100%",
+          }}
+          alignItems={{
+            xs: "center",
+            lg: "start",
+          }}
+        >
+          <DayTabSelector />
+          <EventContainer events={events} day={activeDay} />
+        </Stack>
       </Stack>
     </Stack>
   );
