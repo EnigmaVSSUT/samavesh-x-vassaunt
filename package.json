@@ -32,6 +32,7 @@
     "react-fast-marquee": "^1.3.5",
     "react-hydration-provider": "^1.0.2",
     "react-router-dom": "^6.8.1",
+    "react-to-print": "^2.14.11",
     "react-toastify": "^9.1.1",
     "three": "^0.149.0",
     "zustand": "^4.3.2"
