@@ -1,8 +1,13 @@
-import { Stack, TextField, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { borderRadius, Box } from "@mui/system";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 const ticket = () => {
+  const [file, setFile] = useState();
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
   const ref = useRef();
   return (
     <>
@@ -61,10 +66,15 @@ const ticket = () => {
             <Typography sx={{ color: "white" }}>PHONE NUMBER:</Typography>
             <input type="text" style={{ height: "30px", border: "none" }} />
           </Stack>
+          <img src={file} height="100px" width="100px" />
         </Stack>
       </Box>
+      <Button variant="contained" component="label">
+        Upload Image
+        <input type="file" accept="image/*" onChange={handleChange} hidden />
+      </Button>
       <ReactToPrint
-        trigger={() => <button>print</button>}
+        trigger={() => <Button variant="contained">Generate & Print</Button>}
         content={() => ref.current}
       />
     </>
