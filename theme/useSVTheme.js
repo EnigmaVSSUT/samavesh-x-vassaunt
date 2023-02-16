@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 import paletteOptions from "./options/palette";
 import componentsOptions from "./options/components";
 import typographyOptions from "./options/typography";
@@ -19,7 +19,7 @@ const useSVTheme = () => {
     },
   });
 
-  return theme;
+  return responsiveFontSizes(theme);
 };
 
 export default useSVTheme;

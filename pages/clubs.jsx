@@ -2,22 +2,24 @@ import { Avatar, IconButton, Stack, Typography } from "@mui/material";
 import React from "react";
 import style from "../styles/clubs.module.css";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import Link from "next/link";
+
 function clubs() {
   const clubs = [
     {
       title: "Enigma",
       image: "1",
-      id: "1",
+      id: "enigma",
     },
     {
       title: "Robotics",
       image: "1",
-      id: "2",
+      id: "robotics",
     },
     {
       title: "IIC",
       image: "1",
-      id: "3",
+      id: "iic",
     },
     {
       title: "xyz",
@@ -27,73 +29,73 @@ function clubs() {
     {
       title: "enigma",
       image: "1",
-      id: "5",
+      id: "enigma",
     },
     {
       title: "enigma",
       image: "1",
-      id: "6",
+      id: "enigma",
     },
     {
       title: "enigma",
       image: "1",
-      id: "7",
+      id: "enigma",
     },
     {
-      title: "enigma",
+      title: "Aerotech",
       image: "1",
-      id: "8",
+      id: "aerotech",
     },
     {
-      title: "enigma",
+      title: "Souls & Vibranz",
       image: "1",
-      id: "9",
+      id: "souls",
     },
     {
       title: "Computer Science",
       image: "1",
-      id: "10",
+      id: "cse",
     },
     {
       title: "Information Technology",
       image: "1",
-      id: "11",
+      id: "it",
     },
     {
       title: "Chemical Engineering",
       image: "1",
-      id: "12",
+      id: "che",
     },
     {
       title: "Electrical Engineering",
       image: "1",
-      id: "13",
+      id: "ee",
     },
     ,
     {
       title: "Electrical & Electronics Engineering",
       image: "1",
-      id: "14",
+      id: "eee",
     },
     {
       title: "Electrical & Telecomm. Engineering",
       image: "1",
-      id: "15",
+      id: "etc",
     },
     {
       title: "Mechanical Engineering",
       image: "1",
-      id: "16",
+      id: "me",
     },
     {
       title: "Civil Engineering",
       image: "1",
-      id: "17",
+      id: "ce",
     },
     {
       title: "Metallurgy & Materials Engineering",
       image: "1",
-      id: "18",
+      id: "mme",
     },
   ];
 
@@ -125,7 +127,9 @@ function clubs() {
             </Stack>
             <p>
               <IconButton>
-                <OpenInNewIcon sx={{ color: "#fff" }} />
+                <Link href={`/club/${club.id}`}>
+                  <OpenInNewIcon sx={{ color: "#fff" }} />
+                </Link>
               </IconButton>
             </p>
           </div>
