@@ -4,7 +4,15 @@ import { MuiOtpInput } from "mui-one-time-password-input";
 import { Box, Modal } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
-
+import {
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import React from "react";
 import {
   Radio,
   RadioGroup,
@@ -18,13 +26,43 @@ import {
 import { useState, useEffect } from "react";
 
 const Form = () => {
+  const [values, setValues] = React.useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const [reg, setReg] = useState(false);
   const [college, setCollege] = useState(false);
   const [otpReceived, setOtpReceived] = useState();
   const [open, setOpen] = useState();
   const handleOpen = () => {
     console.log(name, pwd, regnum, branch, year, colgname);
-    if (!email || !pwd || !cpwd || !name || !colgname || !branch || !year) {
+    if (
+      !email ||
+      !pwd ||
+      !cpwd ||
+      !name ||
+      !colgname ||
+      !branch ||
+      !year ||
+      !phnnum
+    ) {
       return toast.warning("All field must be filled");
     } else {
       const otp = sendOTP();
@@ -44,6 +82,7 @@ const Form = () => {
   const [branch, setBranch] = useState("");
   const [year, setYear] = useState("");
   const [colgname, setColgname] = useState("");
+  const [phnnum, setPhnnum] = useState("");
   const verifyOTP = async () => {};
   const sendOTP = async () => {
     return true;
@@ -96,33 +135,55 @@ const Form = () => {
         />
       </Stack>
       <Stack>
-        <TextField
-          required
-          id="password"
+        <InputLabel htmlFor="outlined-adornment-password">Password*</InputLabel>
+        <OutlinedInput
+          id="pwd"
+          type={values.showPassword ? "text" : "password"}
           value={pwd}
           size="small"
-          label="Password"
-          variant="outlined"
-          paddingTop="10px"
-          type="password"
           onChange={(e) => {
             setPwd(e.target.value);
           }}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
         />
-        <TextField
-          required
-          id="name"
+        <InputLabel htmlFor="outlined-adornment-password">
+          Confirm-Password*
+        </InputLabel>
+        <OutlinedInput
+          id="cpwd"
           size="small"
-          label="Confirm Password"
-          variant="outlined"
-          helperText="Password should alphanumeric and atleast 8 characters"
-          paddingTop="10px"
+          type={values.showPassword ? "text" : "password"}
+          value={cpwd}
           onChange={(e) => {
             setCpwd(e.target.value);
           }}
-          type="password"
-          sx={{ marginTop: "1rem" }}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Confirm-Password"
         />
+
         <FormControl sx={{ marginTop: "10px" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">
             Institution
@@ -218,6 +279,20 @@ const Form = () => {
           }}
           onChange={(e) => {
             setBranch(e.target.value);
+          }}
+        />
+        <TextField
+          required
+          id="phnnum"
+          size="small"
+          label="Phone-Number"
+          variant="outlined"
+          value={phnnum}
+          sx={{
+            marginTop: "10px",
+          }}
+          onChange={(e) => {
+            setPhnnum(e.target.value);
           }}
         />
       </Stack>

@@ -14,6 +14,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 const Form = () => {
   const [reg, setReg] = useState(false);
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+
+  const submit = (email, pwd) => {
+    console.log(email, pwd);
+  };
   return (
     <Stack direction="row" justifyContent="center">
       <Stack
@@ -37,7 +43,16 @@ const Form = () => {
           <Typography variant="h3" color="initial">
             Login :
           </Typography>
-          <TextField required id="name" label="Email" variant="outlined" />
+          <TextField
+            required
+            id="name"
+            label="Email"
+            variant="outlined"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
           <Stack sx={{ marginTop: "10px" }}>
             <TextField
               required
@@ -46,9 +61,15 @@ const Form = () => {
               variant="outlined"
               type="password"
               paddingTop="10px"
+              value={pwd}
+              onChange={(e) => {
+                setPwd(e.target.value);
+              }}
             />
           </Stack>
-          <Button variant="contained">Login</Button>
+          <Button variant="contained" onClick={() => submit(email, pwd)}>
+            Login
+          </Button>
         </Stack>
         <Box
           sx={{
