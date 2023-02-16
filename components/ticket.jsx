@@ -1,8 +1,9 @@
 import { Button, Stack, TextField, Typography } from "@mui/material";
 import { borderRadius, Box } from "@mui/system";
 import { useRef, useState } from "react";
+import React from "react";
 import ReactToPrint from "react-to-print";
-const ticket = () => {
+const Ticket = () => {
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
@@ -81,4 +82,4 @@ const ticket = () => {
   );
 };
 
-export default ticket;
+export default Ticket;
