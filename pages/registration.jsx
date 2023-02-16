@@ -4,6 +4,7 @@ import { MuiOtpInput } from "mui-one-time-password-input";
 import { Box, Modal } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
+
 import {
   Input,
   InputAdornment,
@@ -12,6 +13,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Select, MenuItem } from "@mui/material";
 import React from "react";
 import {
   Radio,
@@ -24,6 +26,7 @@ import {
 } from "@mui/material";
 
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 const Form = () => {
   const [values, setValues] = React.useState({
@@ -33,7 +36,7 @@ const Form = () => {
     weightRange: "",
     showPassword: false,
   });
-
+  //password visibility
   const handleClickShowPassword = () => {
     setValues({
       ...values,
@@ -51,6 +54,14 @@ const Form = () => {
   const [college, setCollege] = useState(false);
   const [otpReceived, setOtpReceived] = useState();
   const [open, setOpen] = useState();
+  //form validation
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
+  const regexExp =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+
   const handleOpen = () => {
     console.log(name, pwd, regnum, branch, year, colgname);
     if (
@@ -63,7 +74,16 @@ const Form = () => {
       !year ||
       !phnnum
     ) {
-      return toast.warning("All field must be filled");
+      return toast.error("All field must be filled");
+    }
+    if (phnnum.length < 10) {
+      return toast.error("Enter valid Phone number");
+    }
+    if (pwd != cpwd) {
+      return toast.error("Password and Confirm Password not matching");
+    }
+    if (!regexExp.test(email)) {
+      return toast.error("Enter valid Email");
     } else {
       const otp = sendOTP();
       if (otp) {
@@ -158,6 +178,7 @@ const Form = () => {
           }
           label="Password"
         />
+
         <InputLabel htmlFor="outlined-adornment-password">
           Confirm-Password*
         </InputLabel>
@@ -221,52 +242,76 @@ const Form = () => {
             />
           </RadioGroup>
         </FormControl>
-        <TextField
-          required
-          id="regno"
-          label="Registration Number"
-          variant="outlined"
-          fullWidth="true"
-          size="small"
-          value={regnum}
-          sx={{
-            marginTop: "10px",
-            display: !reg ? "none" : "block",
-          }}
-          onChange={(e) => {
-            setRegnum(e.target.value);
-          }}
-        />
-        <TextField
-          required
-          id="institution-name"
-          label="Institution Name"
-          value={colgname}
-          size="small"
-          variant="outlined"
-          fullWidth="true"
-          sx={{
-            marginTop: "10px",
-            display: college ? "block" : "none",
-          }}
-          onChange={(e) => {
-            setColgname(e.target.value);
-          }}
-        />
-        <TextField
-          required
-          id="year"
+        <Stack direction="row" gap="5px">
+          <TextField
+            required
+            id="regno"
+            label="Registration Number"
+            variant="outlined"
+            fullWidth="true"
+            size="small"
+            value={regnum}
+            sx={{
+              marginTop: "10px",
+              display: !reg ? "none" : "block",
+            }}
+            onChange={(e) => {
+              setRegnum(e.target.value);
+            }}
+          />
+          <TextField
+            required
+            id="phnnum"
+            size="small"
+            label="Phone-Number"
+            variant="outlined"
+            value={phnnum}
+            fullWidth="false"
+            sx={{
+              marginTop: "10px",
+            }}
+            onChange={(e) => {
+              setPhnnum(e.target.value);
+            }}
+          />
+          <TextField
+            required
+            id="institution-name"
+            label="Institution Name"
+            value={colgname}
+            size="small"
+            variant="outlined"
+            fullWidth="false"
+            sx={{
+              marginTop: "10px",
+              display: college ? "block" : "none",
+            }}
+            onChange={(e) => {
+              setColgname(e.target.value);
+            }}
+          />
+        </Stack>
+
+        <InputLabel id="demo-simple-select-label">Graduation-Year</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
           value={year}
           size="small"
-          label="Graduation Year"
-          variant="outlined"
-          sx={{
-            marginTop: "10px",
-          }}
+          label="Graduation-Year"
           onChange={(e) => {
             setYear(e.target.value);
           }}
-        />
+          fullWidth="false"
+        >
+          <MenuItem value={2023}>2023</MenuItem>
+          <MenuItem value={2024}>2024</MenuItem>
+          <MenuItem value={2025}>2025</MenuItem>
+          <MenuItem value={2026}>2026</MenuItem>
+          <MenuItem value={2027}>2027</MenuItem>
+          <MenuItem value={2028}>Other</MenuItem>
+        </Select>
+
         <TextField
           required
           id="branch"
@@ -279,20 +324,6 @@ const Form = () => {
           }}
           onChange={(e) => {
             setBranch(e.target.value);
-          }}
-        />
-        <TextField
-          required
-          id="phnnum"
-          size="small"
-          label="Phone-Number"
-          variant="outlined"
-          value={phnnum}
-          sx={{
-            marginTop: "10px",
-          }}
-          onChange={(e) => {
-            setPhnnum(e.target.value);
           }}
         />
       </Stack>
