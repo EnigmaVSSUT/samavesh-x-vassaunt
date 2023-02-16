@@ -56,7 +56,7 @@ const Events = () => {
       <Typography variant="ACH1" textAlign="center">
         Event Timeline
       </Typography>
-      <Stack padding="16px" gap="20px" alignItems="center" width="100%">
+      <Stack gap="20px" alignItems="center" width="100%">
         <CategoryTabSelector />
         <Stack
           direction={{

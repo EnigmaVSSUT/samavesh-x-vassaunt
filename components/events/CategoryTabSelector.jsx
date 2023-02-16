@@ -24,6 +24,9 @@ const CategoryTabSelector = () => {
       allowScrollButtonsMobile
       sx={{
         width: "100%",
+        "& .MuiTabs-flexContainer": {
+          justifyContent: "center",
+        },
       }}
     >
       <Tab label={<Typography variant="ACH6">Technical</Typography>} />
