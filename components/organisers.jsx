@@ -16,36 +16,44 @@ const Speakers = () => {
     {
       name: "Prof.Dr.Bansidhar Majhi",
       designation: "Hon'ble Vice Chancellor, VSSUT",
+      id: "1",
     },
     {
       name: "Prof.Dr.Bansidhar Majhi",
       designation: "Hon'ble Vice Chancellor, VSSUT",
+      id: "2",
     },
     {
       name: "Prof.Dr.Bansidhar Majhi",
       designation: "Hon'ble Vice Chancellor, VSSUT",
+      id: "3",
     },
     {
       name: "Prof.Dr.Bansidhar Majhi",
       designation: "Hon'ble Vice Chancellor, VSSUT",
+      id: "4",
     },
   ];
   const organisers = [
     {
       name: "name here",
       designation: "designation here",
+      id: "1",
     },
     {
       name: "name",
       designation: "designation",
+      id: "2",
     },
     {
       name: "name",
       designation: "designation",
+      id: "3",
     },
     {
       name: "name",
       designation: "designation",
+      id: "4",
     },
   ];
 
@@ -64,7 +72,7 @@ const Speakers = () => {
         variant="p"
         sx={{ fontSize: "35px", lineHeight: "52px", fontWeight: "100" }}
       >
-        Hon'ble Mentions
+        Hon`&apos;`ble Mentions
       </Typography>
       <Stack
         direction="column"
@@ -97,6 +105,7 @@ const Speakers = () => {
                 backgroundColor: "white",
                 color: "#ffffff",
               }}
+              key={e.id}
             >
               <Avatar
                 src="/clubs/1.png"
@@ -150,6 +159,7 @@ const Speakers = () => {
                 backgroundColor: "white",
                 color: "#ffffff",
               }}
+              key={e.id}
             >
               <Avatar
                 src="/clubs/1.png"
