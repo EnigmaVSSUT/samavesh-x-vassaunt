@@ -3,13 +3,13 @@ import TextField from "@mui/material/TextField";
 import { ToastContainer, toast } from "react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
 import Ticket from "@/components/ticket";
-
+import React from "react";
 import { Button, Typography } from "@mui/material";
 
 import { useState, useEffect } from "react";
 import ticket from "@/components/ticket";
 
-const ticketgen = () => {
+const Ticketgen = () => {
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
@@ -98,4 +98,4 @@ const ticketgen = () => {
   );
 };
 
-export default ticketgen;
+export default Ticketgen;
