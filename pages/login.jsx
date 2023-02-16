@@ -11,6 +11,7 @@ import {
   Box,
 } from "@mui/material";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 const Form = () => {
   const [reg, setReg] = useState(false);
   return (
@@ -43,7 +44,7 @@ const Form = () => {
               id="name"
               label="Password"
               variant="outlined"
-              helperText="Password should alphanumeric and atleast 8 characters"
+              type="password"
               paddingTop="10px"
             />
           </Stack>
@@ -57,7 +58,13 @@ const Form = () => {
             },
           }}
         >
-          <img src="/login/login.png" height="600px" width="600px" sx={{}} />
+          <Image
+            alt="helper image"
+            src="/login/login.png"
+            height="400"
+            width="400"
+            sx={{}}
+          />
         </Box>
       </Stack>
     </Stack>
