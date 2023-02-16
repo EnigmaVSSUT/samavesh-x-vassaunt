@@ -73,7 +73,7 @@ const Speakers = () => {
         variant="p"
         sx={{ fontSize: "35px", lineHeight: "52px", fontWeight: "100" }}
       >
-        Hon`&apos;`ble Mentions
+        Hon &apos; ble Mentions
       </Typography>
       <Stack
         direction="column"
@@ -132,7 +132,7 @@ const Speakers = () => {
           variant="p"
           sx={{ fontSize: "35px", lineHeight: "52px", fontWeight: "100" }}
         >
-          ORGANISERS
+          STUDENT BODIES
         </Typography>
         <Stack
           margin="25px auto"
