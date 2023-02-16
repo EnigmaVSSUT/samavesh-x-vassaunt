@@ -14,12 +14,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Link from "next/link";
 import { useState } from "react";
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
     <AppBar
       sx={{
-        backgroundColor: "#F3EEE8;",
+        // backgroundColor: "#F3EEE8;",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -27,9 +28,13 @@ const Header = () => {
         padding: "10px 32px",
         gap: "20px",
         isolation: "isolate",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+        backdropFilter: "blur(20px)",
       }}
       elevation={0}
       position="sticky"
+      color="header"
     >
       <Typography
         sx={{
