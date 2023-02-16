@@ -82,23 +82,24 @@ const ClubPage = () => {
               margin: { md: "0", sm: "0 auto" },
             }}
           >
-            {club.poc.map((e) => (
-              <Stack
-                sx={{ alignItems: "center", marginRight: "10px" }}
-                key={e.name}
-              >
-                <Avatar>N</Avatar>
-                <Typography variant="subtitle1" color="initial">
-                  {e.name}
-                </Typography>
-                <Typography variant="caption" color="initial">
-                  {e.designation}
-                </Typography>
-                <Typography variant="caption" color="initial">
-                  {e.contactNo}
-                </Typography>
-              </Stack>
-            ))}
+            {club.poc &&
+              club.poc.map((e) => (
+                <Stack
+                  sx={{ alignItems: "center", marginRight: "10px" }}
+                  key={e.name}
+                >
+                  <Avatar>N</Avatar>
+                  <Typography variant="subtitle1" color="initial">
+                    {e.name}
+                  </Typography>
+                  <Typography variant="caption" color="initial">
+                    {e.designation}
+                  </Typography>
+                  <Typography variant="caption" color="initial">
+                    {e.contactNo}
+                  </Typography>
+                </Stack>
+              ))}
           </Stack>
         </Stack>
       </Stack>

@@ -69,6 +69,9 @@ const Header = () => {
         <Typography variant="nav">
           <Link href="/#sponsors">SPONSORS</Link>
         </Typography>
+        <Typography variant="nav">
+          <Link href="/#organisers">THE TEAM</Link>
+        </Typography>
       </Box>
       <Box>
         <Box
@@ -145,6 +148,13 @@ const Header = () => {
               <Typography variant="nav">
                 <Link href="/#speakers" onClick={() => setOpen(false)}>
                   GUESTS
+                </Link>
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography variant="nav">
+                <Link href="/#organisers" onClick={() => setOpen(false)}>
+                  THE TEAM
                 </Link>
               </Typography>
             </ListItem>

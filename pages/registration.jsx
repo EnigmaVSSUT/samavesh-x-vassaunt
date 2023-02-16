@@ -3,6 +3,8 @@ import TextField from "@mui/material/TextField";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { Box, Modal } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
+import "material-react-toastify/dist/ReactToastify.css";
+
 import {
   Radio,
   RadioGroup,
@@ -21,9 +23,15 @@ const Form = () => {
   const [otpReceived, setOtpReceived] = useState();
   const [open, setOpen] = useState();
   const handleOpen = () => {
-    sendOTP();
-
-    setOpen(true);
+    console.log(name, pwd, regnum, branch, year, colgname);
+    if (!email || !pwd || !cpwd || !name || !colgname || !branch || !year) {
+      return toast.warning("All field must be filled");
+    } else {
+      const otp = sendOTP();
+      if (otp) {
+        setOpen();
+      }
+    }
   };
   const handleClose = () => setOpen(false);
   const [otpTyped, setOtpTyped] = useState();
@@ -32,20 +40,13 @@ const Form = () => {
   const [pwd, setPwd] = useState("");
   const [cpwd, setCpwd] = useState("");
   const [radio, setRadio] = useState("");
+  const [regnum, setRegnum] = useState("");
+  const [branch, setBranch] = useState("");
+  const [year, setYear] = useState("");
+  const [colgname, setColgname] = useState("");
   const verifyOTP = async () => {};
   const sendOTP = async () => {
-    if (!email || !pwd || !cpwd || !name || !radio) {
-      return toast.warn("Some fields are missing", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    }
+    return true;
   };
   const style = {
     position: "absolute",
@@ -57,7 +58,6 @@ const Form = () => {
     border: "1px solid ",
     boxShadow: 24,
     p: 4,
-
   };
 
   return (
@@ -68,13 +68,14 @@ const Form = () => {
       margin="0 auto"
       gap="25px"
     >
-      <Typography variant="h3" color="initial">
+      <Typography variant="h4" color="initial">
         Registration Form
       </Typography>
-      <Stack direction="row" gap="30px" sx={{ marginTop: "15px" }}>
+      <Stack direction="row" gap="30px">
         <TextField
           required
           id="name"
+          size="small"
           label="Name"
           variant="outlined"
           value={name}
@@ -85,6 +86,7 @@ const Form = () => {
         <TextField
           required
           id="email"
+          size="small"
           label="Email"
           variant="outlined"
           value={email}
@@ -93,27 +95,33 @@ const Form = () => {
           }}
         />
       </Stack>
-      <Stack sx={{ marginTop: "10px" }}>
+      <Stack>
         <TextField
           required
           id="password"
-          value={password}
+          value={pwd}
+          size="small"
           label="Password"
           variant="outlined"
           paddingTop="10px"
           type="password"
+          onChange={(e) => {
+            setPwd(e.target.value);
+          }}
         />
         <TextField
           required
           id="name"
+          size="small"
           label="Confirm Password"
           variant="outlined"
           helperText="Password should alphanumeric and atleast 8 characters"
           paddingTop="10px"
-
+          onChange={(e) => {
+            setCpwd(e.target.value);
+          }}
           type="password"
           sx={{ marginTop: "1rem" }}
-
         />
         <FormControl sx={{ marginTop: "10px" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">
@@ -130,9 +138,8 @@ const Form = () => {
                 <Radio
                   onChange={(e) => {
                     setReg(e.target.checked);
-
+                    setColgname(e.target.value);
                     setCollege(!e.target.checked);
-
                   }}
                 />
               }
@@ -144,9 +151,8 @@ const Form = () => {
                 <Radio
                   onChange={(e) => {
                     setReg(!e.target.checked);
-
+                    setColgname("");
                     setCollege(e.target.checked);
-
                   }}
                 />
               }
@@ -159,6 +165,8 @@ const Form = () => {
           id="regno"
           label="Registration Number"
           variant="outlined"
+          fullWidth="true"
+          size="small"
           value={regnum}
           sx={{
             marginTop: "10px",
@@ -172,38 +180,44 @@ const Form = () => {
           required
           id="institution-name"
           label="Institution Name"
-          value={college}
+          value={colgname}
+          size="small"
           variant="outlined"
+          fullWidth="true"
           sx={{
             marginTop: "10px",
-            display: nonvssut ? "block" : "none",
+            display: college ? "block" : "none",
           }}
           onChange={(e) => {
-            setCollege(e.target.value);
+            setColgname(e.target.value);
           }}
         />
         <TextField
           required
-          id="phone-number"
-          value={phnnum}
-          label="Contact Number"
+          id="year"
+          value={year}
+          size="small"
+          label="Graduation Year"
           variant="outlined"
           sx={{
             marginTop: "10px",
-            display: nonvssut ? "block" : "none",
           }}
           onChange={(e) => {
-            setPhnnum(e.target.value);
+            setYear(e.target.value);
           }}
         />
         <TextField
           required
-          id="regno"
-          label="Enter College"
+          id="branch"
+          size="small"
+          label="Branch"
           variant="outlined"
+          value={branch}
           sx={{
             marginTop: "10px",
-            display: !college ? "none" : "block",
+          }}
+          onChange={(e) => {
+            setBranch(e.target.value);
           }}
         />
       </Stack>
@@ -240,7 +254,6 @@ const Form = () => {
           </Button>
         </Box>
       </Modal>
-
     </Stack>
   );
 };
