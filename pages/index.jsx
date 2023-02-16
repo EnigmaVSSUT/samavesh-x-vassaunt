@@ -5,6 +5,7 @@ import Timersv from "@/components/timer";
 import Sponsor from "@/components/sponsor";
 import { Box } from "@mui/system";
 import Speakers from "@/components/speakers";
+import Organisers from "@/components/organisers";
 const Hero = () => {
   return (
     <>
@@ -84,6 +85,8 @@ const Hero = () => {
         </div>
         <div id="speakers"></div>
         <Speakers />
+        <div id="organisers"></div>
+        <Organisers />
         <div id="sponsors"></div>
         <Sponsor />
       </Box>
