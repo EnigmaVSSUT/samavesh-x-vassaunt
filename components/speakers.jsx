@@ -27,7 +27,7 @@ const Speakers = () => {
         }}
       >
         <Typography variant="h1" sx={{ fontSize: "45px", lineHeight: "52px" }}>
-          SPEAKERS
+          GUESTS
         </Typography>
         <Box
           sx={{
