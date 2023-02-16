@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import Speaker from "/pictures/speakers.png";
 import Link from "next/link";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const Speakers = () => {
   const officials = [
@@ -181,8 +182,18 @@ const Speakers = () => {
         </Stack>
       </Stack>
       <Link href="/clubs">
-        <Button variant="contained" sx={{ borderRadius: "20px" }}>
-          CLUBS
+        <Button
+          variant="contained"
+          size="large"
+          sx={{
+            borderRadius: "20px",
+            width: "300px",
+            height: "100px",
+            fontSize: "25px",
+          }}
+        >
+          CLUBS & COMMITTIEES
+          <OpenInNewIcon />
         </Button>
       </Link>
     </>
