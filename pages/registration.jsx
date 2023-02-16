@@ -1,5 +1,8 @@
 import { Stack } from "@mui/system";
 import TextField from "@mui/material/TextField";
+import { MuiOtpInput } from "mui-one-time-password-input";
+import { Box, Modal } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
 import {
   Radio,
   RadioGroup,
@@ -9,19 +12,52 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+
 const Form = () => {
   const [reg, setReg] = useState(false);
-  const [nonvssut, setNon] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [college, setCollege] = useState("");
-  const [regnum, setRegnum] = useState("");
-  const [phnnum, setPhnnum] = useState("");
+  const [college, setCollege] = useState(false);
+  const [otpReceived, setOtpReceived] = useState();
+  const [open, setOpen] = useState();
+  const handleOpen = () => {
+    sendOTP();
 
-  const submit = (name, email, password, college, regnum, phnnum) => {
-    console.log(name, email, password, college, regnum, phnnum);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
+  const [otpTyped, setOtpTyped] = useState();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [cpwd, setCpwd] = useState("");
+  const [radio, setRadio] = useState("");
+  const verifyOTP = async () => {};
+  const sendOTP = async () => {
+    if (!email || !pwd || !cpwd || !name || !radio) {
+      return toast.warn("Some fields are missing", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "1px solid ",
+    boxShadow: 24,
+    p: 4,
+
   };
 
   return (
@@ -64,11 +100,20 @@ const Form = () => {
           value={password}
           label="Password"
           variant="outlined"
+          paddingTop="10px"
+          type="password"
+        />
+        <TextField
+          required
+          id="name"
+          label="Confirm Password"
+          variant="outlined"
           helperText="Password should alphanumeric and atleast 8 characters"
           paddingTop="10px"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+
+          type="password"
+          sx={{ marginTop: "1rem" }}
+
         />
         <FormControl sx={{ marginTop: "10px" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">
@@ -77,7 +122,7 @@ const Form = () => {
           <RadioGroup
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
+            name="radio"
           >
             <FormControlLabel
               value="VSSUT"
@@ -85,9 +130,9 @@ const Form = () => {
                 <Radio
                   onChange={(e) => {
                     setReg(e.target.checked);
-                    setNon(!e.target.checked);
-                    setCollege(e.target.value);
-                    setPhnnum("");
+
+                    setCollege(!e.target.checked);
+
                   }}
                 />
               }
@@ -99,9 +144,9 @@ const Form = () => {
                 <Radio
                   onChange={(e) => {
                     setReg(!e.target.checked);
-                    setNon(e.target.checked);
-                    setCollege("");
-                    setRegnum("");
+
+                    setCollege(e.target.checked);
+
                   }}
                 />
               }
@@ -151,13 +196,51 @@ const Form = () => {
             setPhnnum(e.target.value);
           }}
         />
+        <TextField
+          required
+          id="regno"
+          label="Enter College"
+          variant="outlined"
+          sx={{
+            marginTop: "10px",
+            display: !college ? "none" : "block",
+          }}
+        />
       </Stack>
-      <Button
-        variant="contained"
-        onClick={() => submit(name, email, password, college, regnum, phnnum)}
-      >
+
+      <Button onClick={handleOpen} variant="contained">
         Register
       </Button>
+      <ToastContainer />
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography sx={{ marginBottom: "1rem" }} variant="h6">
+            {" "}
+            {`Enter 4 digit OTP sent to ${email}`}
+          </Typography>
+          <MuiOtpInput
+            value={otpTyped}
+            onChange={(newValue) => {
+              setOtpTyped(newValue);
+            }}
+          />
+          <Button
+            onClick={verifyOTP}
+            variant="contained"
+            sx={{ marginTop: "1rem" }}
+          >
+            <Typography sx={{ color: "white" }} variant="p">
+              Verify OTP
+            </Typography>
+          </Button>
+        </Box>
+      </Modal>
+
     </Stack>
   );
 };
