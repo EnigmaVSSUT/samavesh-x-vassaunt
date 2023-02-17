@@ -6,6 +6,8 @@ import Sponsor from "@/components/sponsor";
 import { Box } from "@mui/system";
 import Speakers from "@/components/speakers";
 import Organisers from "@/components/organisers";
+import { Button } from "@mui/material";
+import Link from "next/link";
 const Hero = () => {
   return (
     <>
@@ -45,6 +47,14 @@ const Hero = () => {
             <br />
             FEST OF VSSUT
             <Timersv />
+            <Link href="/ticketgen">
+              <Button
+                variant="contained"
+                sx={{ bottom: "20px", fontSize: "20px", padding: "10px 50px" }}
+              >
+                Collect&nbsp;&nbsp; your&nbsp;&nbsp; ticket
+              </Button>
+            </Link>
           </Typography>
           <img src="./theme.png" alt="Fest Poster" className={styles.poster1} />
         </Box>
