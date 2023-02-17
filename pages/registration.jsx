@@ -4,6 +4,7 @@ import { MuiOtpInput } from "mui-one-time-password-input";
 import { Box, Modal } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 import {
   Input,
@@ -52,7 +53,7 @@ const Form = () => {
 
   const [reg, setReg] = useState(false);
   const [college, setCollege] = useState(false);
-  const [otpReceived, setOtpReceived] = useState();
+  const [otpReceived, setOtpReceived] = useState("");
   const [open, setOpen] = useState();
   //form validation
   const {
@@ -61,8 +62,8 @@ const Form = () => {
   } = useForm();
   const regexExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  const handleOpen = () => {
-    console.log(
+  const handleOpen = async () => {
+    console.log([
       { username: name },
       { email: email },
       { password: pwd },
@@ -70,8 +71,8 @@ const Form = () => {
       { regdNo: regnum },
       { collegeName: colgname },
       { graduationYear: year },
-      { branch: branch }
-    );
+      { branch: branch },
+    ]);
     if (
       !email ||
       !pwd ||
@@ -93,9 +94,12 @@ const Form = () => {
     if (!regexExp.test(email)) {
       return toast.error("Enter valid Email");
     } else {
-      const otp = sendOTP();
-      if (otp) {
-        setOpen();
+      const otpJson = await sendOTP(email);
+      // console.log(otpJson.success)
+      if (otpJson.success) {
+        setOtpReceived(otpJson.otp);
+        console.log(otpReceived);
+        setOpen(true);
       }
     }
   };
@@ -112,9 +116,20 @@ const Form = () => {
   const [colgname, setColgname] = useState("");
   const [phnnum, setPhnnum] = useState("");
   const verifyOTP = async () => {};
-  const sendOTP = async () => {
-    return true;
+
+  const sendOTP = async (email) => {
+    const response = await axios.post(
+      "http://localhost:8000/api/authRoutes/sendOTP",
+      {
+        email,
+      }
+    );
+
+    console.log(response.data.success);
+
+    return response.data;
   };
+
   const style = {
     position: "absolute",
     top: "50%",
