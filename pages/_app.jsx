@@ -9,23 +9,25 @@ import dynamic from "next/dynamic";
 import { Router } from "next/router";
 import { useEffect } from "react";
 import SVTheme from "theme/SVTheme";
-
+import AppContextProvider from "context/AppContextProvider";
 const Cursor = dynamic(() => import("@/components/cursor/Cursor"), {
   ssr: false,
 });
 
 export default function App({ Component, pageProps }) {
   return (
-    <SVTheme>
-      <Stack minHeight="100vh">
-        <Header />
-        <Stack flexGrow={1}>
-          <AnimatePresence mode="wait" initial={false}>
-            <Component {...pageProps} />
-          </AnimatePresence>
+    <AppContextProvider>
+      <SVTheme>
+        <Stack minHeight="100vh">
+          <Header />
+          <Stack flexGrow={1}>
+            <AnimatePresence mode="wait" initial={false}>
+              <Component {...pageProps} />
+            </AnimatePresence>
+          </Stack>
+          <Footer />
         </Stack>
-        <Footer />
-      </Stack>
-    </SVTheme>
+      </SVTheme>
+    </AppContextProvider>
   );
 }
