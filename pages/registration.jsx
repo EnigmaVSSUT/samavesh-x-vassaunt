@@ -119,7 +119,7 @@ const Form = () => {
 
   const sendOTP = async (email) => {
     const response = await axios.post(
-      "http://localhost:8000/api/authRoutes/sendOTP",
+      "http://localhost:8000/api/auth/sendOTP",
       {
         email,
       }
