@@ -18,7 +18,7 @@ const Form = () => {
   const [pwd, setPwd] = useState("");
 
   const submit = (email, pwd) => {
-    console.log(email, pwd);
+    console.log({ email: email }, { password: pwd });
   };
   return (
     <Stack direction="row" justifyContent="center">
