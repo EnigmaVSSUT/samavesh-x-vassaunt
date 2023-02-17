@@ -10,13 +10,15 @@ import {
   List,
   ListItem,
 } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Link from "next/link";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import AppContext from "context/AppContext";
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const { isAuthenticated } = useContext(AppContext);
   return (
     <AppBar
       sx={{
@@ -79,29 +81,46 @@ const Header = () => {
         </Typography>
       </Box>
       <Box>
-        <Box
-          sx={{
-            display: {
-              xs: "none",
-              md: "flex",
-            },
-          }}
-        >
-          <Link href="/registration">
-            <Button
-              variant="contained"
-              sx={{ borderRadius: "20px", marginRight: "10px" }}
-            >
-              Register
-            </Button>
-          </Link>
+        {isAuthenticated ? (
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+              },
+            }}
+          >
+            <Link href="/registration">
+              <Button
+                variant="contained"
+                sx={{ borderRadius: "20px", marginRight: "10px" }}
+              >
+                Register
+              </Button>
+            </Link>
 
-          <Link href="/login">
-            <Button variant="contained" sx={{ borderRadius: "20px" }}>
-              Login
-            </Button>
-          </Link>
-        </Box>
+            <Link href="/login">
+              <Button variant="contained" sx={{ borderRadius: "20px" }}>
+                Login
+              </Button>
+            </Link>
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+              },
+            }}
+          >
+            <Link href="/profile">
+              <IconButton>
+                <PersonIcon></PersonIcon>
+              </IconButton>
+            </Link>
+          </Box>
+        )}
         <IconButton sx={{ display: { md: "none" } }}>
           <MenuIcon onClick={() => setOpen(true)} />
         </IconButton>
