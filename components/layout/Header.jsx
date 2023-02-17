@@ -81,7 +81,7 @@ const Header = () => {
         </Typography>
       </Box>
       <Box>
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <Box
             sx={{
               display: {
@@ -115,7 +115,7 @@ const Header = () => {
             }}
           >
             <Link href="/profile">
-              <IconButton>
+              <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
               </IconButton>
             </Link>
@@ -147,6 +147,36 @@ const Header = () => {
           </div>
           <Divider />
           <List>
+            <ListItem>
+              {" "}
+              {!isAuthenticated ? (
+                <>
+                  <Link href="/registration">
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: "20px", marginRight: "10px" }}
+                      onClick={() => setOpen(false)}
+                    >
+                      Register
+                    </Button>
+                  </Link>
+
+                  <Link href="/login">
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: "20px" }}
+                      onClick={() => setOpen(false)}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <Link href="/profile" onClick={() => setOpen(false)}>
+                  <Typography variant="nav">Profile</Typography>
+                </Link>
+              )}{" "}
+            </ListItem>
             <ListItem>
               <Typography variant="nav">
                 <Link href="/#home" onClick={() => setOpen(false)}>
@@ -188,27 +218,6 @@ const Header = () => {
                   SPONSORS
                 </Link>
               </Typography>
-            </ListItem>
-            <ListItem>
-              <Link href="/registration">
-                <Button
-                  variant="contained"
-                  sx={{ borderRadius: "20px", marginRight: "10px" }}
-                  onClick={() => setOpen(false)}
-                >
-                  Register
-                </Button>
-              </Link>
-
-              <Link href="/login">
-                <Button
-                  variant="contained"
-                  sx={{ borderRadius: "20px" }}
-                  onClick={() => setOpen(false)}
-                >
-                  Login
-                </Button>
-              </Link>
             </ListItem>
           </List>
         </SwipeableDrawer>

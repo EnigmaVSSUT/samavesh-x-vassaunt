@@ -8,7 +8,10 @@ import Speakers from "@/components/speakers";
 import Organisers from "@/components/organisers";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import AppContext from "context/AppContext";
+import React from "react";
 const Hero = () => {
+  const { isAuthenticated, paymentStatus } = React.useContext(AppContext);
   return (
     <>
       <div id="home"></div>
@@ -47,8 +50,13 @@ const Hero = () => {
             <br />
             FEST OF VSSUT
             <Timersv />
-            <Link href="/ticketgen">
-              <Button variant="contained" sx={{ bottom: "20px", fontSize: "20px", padding: "10px 50px" }}>Collect&nbsp;&nbsp; your&nbsp;&nbsp; ticket</Button>
+            <Link href={!paymentStatus ? "/PaymentPage" : "/ticketgen"}>
+              <Button
+                variant="contained"
+                sx={{ bottom: "20px", fontSize: "20px", padding: "10px 50px" }}
+              >
+                Collect&nbsp;&nbsp; your&nbsp;&nbsp; ticket
+              </Button>
             </Link>
           </Typography>
           <img src="./theme.png" alt="Fest Poster" className={styles.poster1} />
@@ -73,17 +81,13 @@ const Hero = () => {
               MARVEL AT VSSUT
             </Typography>
             <Typography variant="nav" color="initial" sx={{ color: "#4D4544" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Tristique senectus et netus et malesuada fames ac turpis. Amet est
-              placerat in egestas erat imperdiet sed euismod nisi. Nulla aliquet
-              porttitor lacus luctus accumsan tortor posuere ac.Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.Amet est placerat in
-              egestas erat imperdiet sed euismod nisi. Nulla aliquet porttitor
-              lacus luctus accumsan tortor posuere ac.Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore.
+              Marvel Cinematic Universe, fondly known as MCU, is an essence of
+              childhood where it takes even an adult to the nostalgia of falling
+              in love with their superheroes all over again. Be it Ironman,
+              Deadpool, Groot or Captain America, their fanbase knows no age
+              restrictions. The marvellous love for those friendly superheroes
+              would just increase with time as one learns about their pure
+              intentions and morals for which they fight against injustice.
             </Typography>
           </Box>
           <img src="./festposter.png" alt="Theme" className={styles.poster} />
