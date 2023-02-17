@@ -31,10 +31,15 @@ const Sponsor = () => {
           gap: "20px",
         }}
       >
-        <Typography variant="h1" sx={{ fontSize: "45px", lineHeight: "52px" }}>
+        <Typography
+          variant="h1"
+          margin="3rem 0"
+          sx={{ fontSize: "45px", lineHeight: "52px" }}
+        >
           Sponsors
         </Typography>
         <Box
+          margin="1rem 0"
           sx={{
             display: "flex",
             width: "80%",
@@ -42,7 +47,7 @@ const Sponsor = () => {
             alignItems: "center",
             flexWrap: "wrap",
             rowGap: {
-              xs: "20px",
+              xs: "50px",
             },
             columnGap: {
               xs: "10px",
