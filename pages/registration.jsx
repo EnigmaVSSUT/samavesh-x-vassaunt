@@ -63,7 +63,16 @@ const Form = () => {
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
 
   const handleOpen = () => {
-    console.log(name, pwd, regnum, branch, year, colgname);
+    console.log(
+      { username: name },
+      { email: email },
+      { password: pwd },
+      { isVssutian: !college },
+      { regdNo: regnum },
+      { collegeName: colgname },
+      { graduationYear: year },
+      { branch: branch }
+    );
     if (
       !email ||
       !pwd ||
