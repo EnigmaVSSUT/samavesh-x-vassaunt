@@ -26,7 +26,11 @@ const Speakers = () => {
           gap: "20px",
         }}
       >
-        <Typography variant="h1" sx={{ fontSize: "45px", lineHeight: "52px" }}>
+        <Typography
+          variant="h1"
+          margin="3rem 0"
+          sx={{ fontSize: "45px", lineHeight: "52px" }}
+        >
           GUESTS
         </Typography>
         <Box

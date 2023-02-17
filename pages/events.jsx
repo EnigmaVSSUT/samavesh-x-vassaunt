@@ -2,6 +2,7 @@ import CategoryTabSelector from "@/components/events/CategoryTabSelector";
 import DayTabSelector from "@/components/events/DayTabSelector";
 import EventCard from "@/components/events/EventCard";
 import EventContainer from "@/components/events/EventContainer";
+import Marqueesv from "@/components/marquee";
 import timeline from "@/lib/data/timeline";
 import useEventTimelineStore from "@/lib/store/useEventTimelineStore";
 import {
