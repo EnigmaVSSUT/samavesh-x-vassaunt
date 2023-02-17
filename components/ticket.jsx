@@ -13,10 +13,11 @@ const Ticket = () => {
   return (
     <>
       <Box
-        width="600px"
+        width="fit-content"
         backgroundColor="#D61513"
         borderRadius="10px"
         margin="0 auto"
+        padding = "10px"
         ref={ref}
       >
         <Stack direction="row" justifyContent="space-between">
@@ -43,31 +44,39 @@ const Ticket = () => {
             69
           </Typography>
         </Stack>
-        <Stack
-          direction="column"
-          justifyContent="space-between"
-          spacing={1}
-          padding="10px"
-        >
-          <Stack direction="row" spacing={1}>
-            <Typography sx={{ color: "white" }}>Name:</Typography>
-            <input
-              type="text"
-              style={{ height: "30px", width: "250px", border: "none" }}
-            />
+
+
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <Box sx={{ margin: "10px", height: 100, width: 100, borderRadius: "50%", border: "1px solid #c0c0c0" }}>
+            <img src={file} height="100px" width="100px" style={{ borderRadius: "50%" }} />
+          </Box>
+            
+          <Stack
+            direction="column"
+            justifyContent="space-between"
+            spacing={1}
+            padding="10px"
+          >
+            <Stack direction="row" spacing={1}>
+
+              <Typography sx={{ color: "white" }}>NAME:</Typography>
+              <input
+                type="text"
+                style={{ height: "30px", width: "100%", border: "none" }}
+              />
+            </Stack>
+            <Stack direction="row" spacing={1}>
+              <Typography sx={{ color: "white" }}>COLLEGE:</Typography>
+              <input
+                type="text"
+                style={{ height: "30px", width: "100%", border: "none" }}
+              />
+            </Stack>
+            <Stack direction="row" spacing={1}>
+              <Typography sx={{ color: "white" }}>PHONE&nbsp;&nbsp;&nbsp;NUMBER:</Typography>
+              <input type="text" style={{ height: "30px", width: "100%", border: "none" }} />
+            </Stack>
           </Stack>
-          <Stack direction="row" spacing={1}>
-            <Typography sx={{ color: "white" }}>COLLEGE:</Typography>
-            <input
-              type="text"
-              style={{ height: "30px", width: "", border: "none" }}
-            />
-          </Stack>
-          <Stack direction="row" spacing={1}>
-            <Typography sx={{ color: "white" }}>PHONE NUMBER:</Typography>
-            <input type="text" style={{ height: "30px", border: "none" }} />
-          </Stack>
-          <img src={file} height="100px" width="100px" />
         </Stack>
       </Box>
       <Button variant="contained" component="label">
