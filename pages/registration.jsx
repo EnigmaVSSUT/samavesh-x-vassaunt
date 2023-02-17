@@ -59,11 +59,19 @@ const Form = () => {
     register,
     formState: { errors },
   } = useForm();
-  const regexExp =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+  const regexExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   const handleOpen = () => {
-    console.log(name, pwd, regnum, branch, year, colgname);
+    console.log(
+      { username: name },
+      { email: email },
+      { password: pwd },
+      { isVssutian: !college },
+      { regdNo: regnum },
+      { collegeName: colgname },
+      { graduationYear: year },
+      { branch: branch }
+    );
     if (
       !email ||
       !pwd ||

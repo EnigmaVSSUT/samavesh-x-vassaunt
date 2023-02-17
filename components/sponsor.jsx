@@ -112,13 +112,10 @@ const Sponsor = () => {
               SPONSOR US
             </Typography>
             <Typography variant="nav" color="#fff">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Tristique senectus et netus et malesuada fames ac turpis. Amet est
-              placerat in egestas erat imperdiet sed euismod nisi. Nulla aliquet
-              porttitor lacus luctus accumsan tortor posuere ac. Amet est
-              placerat in egestas erat imperdiet sed euismod nisi. Nulla aliquet
-              porttitor lacus luctus accumsan tortor posuere ac.
+              Join us and become a part of the largest techno cultural festival
+              in western Odisha. Explore our packages and unleash the marketing
+              potential of thousands of young minds by advertising your brand in
+              one of the largest youth gathering of Odisha.
               <br />
             </Typography>
           </Box>
