@@ -125,18 +125,10 @@ const Header = () => {
               },
             }}
           >
-
-            <Link
-              href={
-                localStorage.getItem("token") ? "/account" : "/registration"
-              }
-            >
-
             <Button variant="contained" sx={{ borderRadius: "20px" }}>
               Logout
             </Button>
             <Link href="/Profile">
-
               <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
               </IconButton>
