@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Stack } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { Box, Modal } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
-
+import axios from "axios";
+import LoadingButton from "@mui/lab/LoadingButton";
 import {
   Input,
   InputAdornment,
@@ -27,8 +29,14 @@ import {
 
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-
+import { useRouter } from "next/router";
+import AppContext from "context/AppContext";
 const Form = () => {
+  const router = useRouter();
+  useEffect(() => {
+    if (isAuthenticated) router.push("/");
+  }, []);
+  const { isAuthenticated, setIsAuthenticated } = React.useContext(AppContext);
   const [values, setValues] = React.useState({
     amount: "",
     password: "",
@@ -43,17 +51,16 @@ const Form = () => {
       showPassword: !values.showPassword,
     });
   };
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
   const [reg, setReg] = useState(false);
   const [college, setCollege] = useState(false);
-  const [otpReceived, setOtpReceived] = useState();
-  const [open, setOpen] = useState();
+  const [otp, setOtp] = useState();
+  const [open, setOpen] = useState(false);
+  const [isVssutian, setIsVssutian] = useState(false);
   //form validation
   const {
     register,
@@ -61,17 +68,7 @@ const Form = () => {
   } = useForm();
   const regexExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  const handleOpen = () => {
-    console.log(
-      { username: name },
-      { email: email },
-      { password: pwd },
-      { isVssutian: !college },
-      { regdNo: regnum },
-      { collegeName: colgname },
-      { graduationYear: year },
-      { branch: branch }
-    );
+  const handleOpen = async () => {
     if (
       !email ||
       !pwd ||
@@ -84,37 +81,118 @@ const Form = () => {
     ) {
       return toast.error("All field must be filled");
     }
-    if (phnnum.length < 10) {
+    if (phnnum.length !== 10) {
       return toast.error("Enter valid Phone number");
     }
+    if (pwd.length < 5)
+      toast.error("Password length must be atleast 5 characters!");
     if (pwd != cpwd) {
       return toast.error("Password and Confirm Password not matching");
     }
+
     if (!regexExp.test(email)) {
       return toast.error("Enter valid Email");
-    } else {
-      const otp = sendOTP();
-      if (otp) {
-        setOpen();
+    }
+    if (!college) {
+      if (regnum?.length !== 10) {
+        return toast.error("Enter valid 10 digit registration number");
       }
     }
+    sendOTP();
   };
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [otpTyped, setOtpTyped] = useState();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [pwd, setPwd] = useState("");
   const [cpwd, setCpwd] = useState("");
-  const [radio, setRadio] = useState("");
-  const [regnum, setRegnum] = useState("");
+  // const [otpTyped,setOtpTyped]
+  const [regnum, setRegnum] = useState();
   const [branch, setBranch] = useState("");
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState();
   const [colgname, setColgname] = useState("");
-  const [phnnum, setPhnnum] = useState("");
-  const verifyOTP = async () => {};
-  const sendOTP = async () => {
-    return true;
+  const [phnnum, setPhnnum] = useState();
+  const [verifyLoad, setVerifyLoad] = useState(false);
+  const verifyOTP = async () => {
+    setVerifyLoad(true);
+    if (otp !== otpTyped) {
+      toast.error("Your entered OTP didn't match the OTP sent to your e-mail!");
+    } else {
+      toast.success("OTP matched!");
+      setOtp("");
+      setOtpTyped("");
+      setOpen(false);
+      const { data } = await axios.post(
+        "http://localhost:8000/api/auth/signup",
+        {
+          username: name,
+          email,
+          password: cpwd,
+          isVssutian: colgname === "VSSUT" ? true : false,
+          regdNo: regnum ? regnum : 0,
+          college: colgname,
+          graduationYear: year,
+          branch,
+          phone: phnnum,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+
+      if (await data.success) {
+        toast.success(await data.message);
+        // window.location.reload()
+        setColgname("");
+        setName("");
+        setPwd("");
+        setCpwd("");
+        setCollege(false);
+        setReg(false);
+        setOpen(false);
+        setYear("");
+        setRegnum("");
+        setBranch("");
+        localStorage.setItem("token", await data.token);
+        setIsAuthenticated(true);
+      } else {
+        toast.error(await data.message);
+      }
+    }
+    setVerifyLoad(false);
   };
+
+  const sendOTP = async () => {
+    setOtp("");
+    setOtpTyped("");
+    setOtpLoading(true);
+    const { data } = await axios.post(
+      "http://localhost:8000/api/auth/sendOTP",
+      { email },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Accept: "application/json",
+        },
+      }
+    );
+    if (await data.otp) {
+      setOtp(await data.otp);
+
+      setOpen(true);
+    }
+
+    toast.info(await data.message);
+    setOtpLoading(false);
+  };
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -126,7 +204,7 @@ const Form = () => {
     boxShadow: 24,
     p: 4,
   };
-
+  const [otpLoading, setOtpLoading] = useState(false);
   return (
     <Stack
       maxWidth="550px"
@@ -243,6 +321,7 @@ const Form = () => {
                     setReg(!e.target.checked);
                     setColgname("");
                     setCollege(e.target.checked);
+                    setIsVssutian(e.target.checked);
                   }}
                 />
               }
@@ -258,6 +337,7 @@ const Form = () => {
             variant="outlined"
             fullWidth="true"
             size="small"
+            type="number"
             value={regnum}
             sx={{
               marginTop: "10px",
@@ -269,6 +349,7 @@ const Form = () => {
           />
           <TextField
             required
+            type="number"
             id="phnnum"
             size="small"
             label="Phone-Number"
@@ -336,9 +417,13 @@ const Form = () => {
         />
       </Stack>
 
-      <Button onClick={handleOpen} variant="contained">
+      <LoadingButton
+        loading={otpLoading}
+        onClick={handleOpen}
+        variant="contained"
+      >
         Register
-      </Button>
+      </LoadingButton>
       <ToastContainer />
       <Modal
         open={open}
@@ -357,15 +442,16 @@ const Form = () => {
               setOtpTyped(newValue);
             }}
           />
-          <Button
+          <LoadingButton
             onClick={verifyOTP}
             variant="contained"
             sx={{ marginTop: "1rem" }}
+            loading={verifyLoad}
           >
             <Typography sx={{ color: "white" }} variant="p">
               Verify OTP
             </Typography>
-          </Button>
+          </LoadingButton>
         </Box>
       </Modal>
     </Stack>

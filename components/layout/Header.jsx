@@ -16,9 +16,11 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Link from "next/link";
 import { useState, useContext } from "react";
 import AppContext from "context/AppContext";
+import { useRouter } from "next/router";
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { isAuthenticated } = useContext(AppContext);
+  const router = useRouter();
   return (
     <AppBar
       sx={{
@@ -81,7 +83,7 @@ const Header = () => {
         </Typography>
       </Box>
       <Box>
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <Box
             sx={{
               display: {
@@ -90,7 +92,10 @@ const Header = () => {
               },
             }}
           >
-            <Link href="/registration">
+            <Link
+              hidden={router.pathname === "/registration"}
+              href="/registration"
+            >
               <Button
                 variant="contained"
                 sx={{ borderRadius: "20px", marginRight: "10px" }}
@@ -99,7 +104,7 @@ const Header = () => {
               </Button>
             </Link>
 
-            <Link href="/login">
+            <Link hidden={router.pathname === "/login"} href="/login">
               <Button variant="contained" sx={{ borderRadius: "20px" }}>
                 Login
               </Button>
@@ -114,8 +119,8 @@ const Header = () => {
               },
             }}
           >
-            <Link href="/profile">
-              <IconButton>
+            <Link href="/Profile">
+              <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
               </IconButton>
             </Link>
@@ -147,6 +152,39 @@ const Header = () => {
           </div>
           <Divider />
           <List>
+            <ListItem>
+              {" "}
+              {!isAuthenticated ? (
+                <>
+                  <Link
+                    hidden={router.pathname === "registration"}
+                    href="/registration"
+                  >
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: "20px", marginRight: "10px" }}
+                      onClick={() => setOpen(false)}
+                    >
+                      Register
+                    </Button>
+                  </Link>
+
+                  <Link hidden={router.pathname === "/login"} href="/login">
+                    <Button
+                      variant="contained"
+                      sx={{ borderRadius: "20px" }}
+                      onClick={() => setOpen(false)}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <Link href="/Profile" onClick={() => setOpen(false)}>
+                  <Typography variant="nav">Profile</Typography>
+                </Link>
+              )}{" "}
+            </ListItem>
             <ListItem>
               <Typography variant="nav">
                 <Link href="/#home" onClick={() => setOpen(false)}>
@@ -188,27 +226,6 @@ const Header = () => {
                   SPONSORS
                 </Link>
               </Typography>
-            </ListItem>
-            <ListItem>
-              <Link href="/registration">
-                <Button
-                  variant="contained"
-                  sx={{ borderRadius: "20px", marginRight: "10px" }}
-                  onClick={() => setOpen(false)}
-                >
-                  Register
-                </Button>
-              </Link>
-
-              <Link href="/login">
-                <Button
-                  variant="contained"
-                  sx={{ borderRadius: "20px" }}
-                  onClick={() => setOpen(false)}
-                >
-                  Login
-                </Button>
-              </Link>
             </ListItem>
           </List>
         </SwipeableDrawer>

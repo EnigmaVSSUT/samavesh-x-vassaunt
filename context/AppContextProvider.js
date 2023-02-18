@@ -10,6 +10,7 @@ const AppContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [events, setEvents] = useState([]);
   const [participations, setParticipations] = useState([]);
+  const [paymentStatus, setPaymentStatus] = useState(false);
   return (
     <AppContext.Provider
       value={{ isAuthenticated, events, setIsAuthenticated, setEvents }}

@@ -2,7 +2,6 @@ import CategoryTabSelector from "@/components/events/CategoryTabSelector";
 import DayTabSelector from "@/components/events/DayTabSelector";
 import EventCard from "@/components/events/EventCard";
 import EventContainer from "@/components/events/EventContainer";
-import Marqueesv from "@/components/marquee";
 import timeline from "@/lib/data/timeline";
 import useEventTimelineStore from "@/lib/store/useEventTimelineStore";
 import {
@@ -14,8 +13,8 @@ import {
   useTheme,
   Grid,
 } from "@mui/material";
+import { Box } from "@mui/system";
 import { AnimatePresence, motion } from "framer-motion";
-
 const Day = ({ day }) => {
   return (
     <Typography
@@ -54,9 +53,6 @@ const Events = () => {
       }}
       top="100px"
     >
-      <Typography variant="ACH1" textAlign="center">
-        Event Timeline
-      </Typography>
       <Stack gap="20px" alignItems="center" width="100%">
         <CategoryTabSelector />
         <Stack
@@ -73,7 +69,9 @@ const Events = () => {
           }}
         >
           <DayTabSelector />
-          <EventContainer events={events} day={activeDay} />
+          <Box sx={{ overyflowY: "scroll" }}>
+            <EventContainer events={events} day={activeDay} />
+          </Box>
         </Stack>
       </Stack>
     </Stack>

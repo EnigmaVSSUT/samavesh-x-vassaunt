@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Stack } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,8 +9,16 @@ import { Button, Typography } from "@mui/material";
 
 import { useState, useEffect } from "react";
 import ticket from "@/components/ticket";
-
+import AppContext from "context/AppContext";
+import { useRouter } from "next/router";
 const Ticketgen = () => {
+  const router = useRouter();
+  const { isAuthenticated, paymentStatus } = React.useContext(AppContext);
+  useEffect(() => {
+    if (!paymentStatus) {
+      router.push("/PaymentPage");
+    }
+  }, []);
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
