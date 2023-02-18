@@ -64,3 +64,10 @@ body {
   height: 32vw;
   width: 28vw;
 }
+@media print {
+  @page {
+    orientation: landscape;
+    margin: 0.2mm;
+    size: 5.2in 3.36in;
+  }
+}
