@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Stack } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,8 +9,14 @@ import { Button, Typography } from "@mui/material";
 import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PDFViewer } from "@react-pdf/renderer";
 import { useState, useEffect } from "react";
-
+import ticket from "@/components/ticket";
+import AppContext from "context/AppContext";
 const Ticketgen = () => {
+  const { isAuthenticated, paymentStatus } = React.useContext(AppContext);
+  useEffect(() => {
+    if (!paymentStatus || !isAuthenticated) {
+    }
+  }, []);
   const [file, setFile] = useState();
   function handleChange(e) {
     console.log(e.target.files);
