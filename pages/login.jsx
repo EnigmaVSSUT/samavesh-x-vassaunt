@@ -1,3 +1,4 @@
+import React from "react";
 import { Stack } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import {
@@ -12,11 +13,19 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import AppContext from "context/AppContext";
+import { useRouter } from "next/router";
 const Form = () => {
+  const { isAuthenticated } = React.useContext(AppContext);
   const [reg, setReg] = useState(false);
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-
+  const router = useRouter();
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/");
+    }
+  });
   const submit = (email, pwd) => {
     console.log({ email: email }, { password: pwd });
   };
