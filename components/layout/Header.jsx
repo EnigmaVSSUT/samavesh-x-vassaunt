@@ -16,9 +16,11 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Link from "next/link";
 import { useState, useContext } from "react";
 import AppContext from "context/AppContext";
+import { useRouter } from "next/router";
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { isAuthenticated } = useContext(AppContext);
+  const router = useRouter();
   return (
     <AppBar
       sx={{
@@ -90,7 +92,10 @@ const Header = () => {
               },
             }}
           >
-            <Link href="/registration">
+            <Link
+              hidden={router.pathname === "/registration"}
+              href="/registration"
+            >
               <Button
                 variant="contained"
                 sx={{ borderRadius: "20px", marginRight: "10px" }}
@@ -99,7 +104,7 @@ const Header = () => {
               </Button>
             </Link>
 
-            <Link href="/login">
+            <Link hidden={router.pathname === "/login"} href="/login">
               <Button variant="contained" sx={{ borderRadius: "20px" }}>
                 Login
               </Button>
@@ -151,7 +156,10 @@ const Header = () => {
               {" "}
               {!isAuthenticated ? (
                 <>
-                  <Link href="/registration">
+                  <Link
+                    hidden={router.pathname === "registration"}
+                    href="/registration"
+                  >
                     <Button
                       variant="contained"
                       sx={{ borderRadius: "20px", marginRight: "10px" }}
@@ -161,7 +169,7 @@ const Header = () => {
                     </Button>
                   </Link>
 
-                  <Link href="/login">
+                  <Link hidden={router.pathname === "/login"} href="/login">
                     <Button
                       variant="contained"
                       sx={{ borderRadius: "20px" }}

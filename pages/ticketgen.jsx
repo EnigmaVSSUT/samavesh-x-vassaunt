@@ -10,10 +10,13 @@ import { Button, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import ticket from "@/components/ticket";
 import AppContext from "context/AppContext";
+import { useRouter } from "next/router";
 const Ticketgen = () => {
+  const router = useRouter();
   const { isAuthenticated, paymentStatus } = React.useContext(AppContext);
   useEffect(() => {
-    if (!paymentStatus || !isAuthenticated) {
+    if (!paymentStatus) {
+      router.push("/PaymentPage");
     }
   }, []);
   const [file, setFile] = useState();

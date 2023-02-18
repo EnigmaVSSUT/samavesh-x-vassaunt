@@ -29,10 +29,12 @@ import {
 
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import AppContext from "context/AppContext";
 const Form = () => {
+  const router = useRouter();
   useEffect(() => {
-    if (isAuthenticated) return;
+    if (isAuthenticated) router.push("/");
   }, []);
   const { isAuthenticated, setIsAuthenticated } = React.useContext(AppContext);
   const [values, setValues] = React.useState({
