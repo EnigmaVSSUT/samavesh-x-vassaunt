@@ -17,10 +17,16 @@ import Link from "next/link";
 import { useState, useContext } from "react";
 import AppContext from "context/AppContext";
 import { useRouter } from "next/router";
+
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { isAuthenticated } = useContext(AppContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(AppContext);
   const router = useRouter();
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    router.push("/");
+  };
   return (
     <AppBar
       sx={{
@@ -119,6 +125,9 @@ const Header = () => {
               },
             }}
           >
+            <Button variant="contained" sx={{ borderRadius: "20px" }}>
+              Logout
+            </Button>
             <Link href="/Profile">
               <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
@@ -180,7 +189,12 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
-                <Link href="/Profile" onClick={() => setOpen(false)}>
+                <Link
+                  href={
+                    localStorage.getItem("token") ? "/account" : "/registration"
+                  }
+                  onClick={() => setOpen(false)}
+                >
                   <Typography variant="nav">Profile</Typography>
                 </Link>
               )}{" "}
@@ -226,6 +240,18 @@ const Header = () => {
                   SPONSORS
                 </Link>
               </Typography>
+            </ListItem>
+            <ListItem>
+              <Button
+                variant="contained"
+                sx={{
+                  borderRadius: "20px",
+                  display: isAuthenticated ? "block" : "none",
+                }}
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
             </ListItem>
           </List>
         </SwipeableDrawer>
