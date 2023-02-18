@@ -13,7 +13,14 @@ const AppContextProvider = ({ children }) => {
   const [paymentStatus, setPaymentStatus] = useState(false);
   return (
     <AppContext.Provider
-      value={{ isAuthenticated, events, setIsAuthenticated, setEvents }}
+      value={{
+        isAuthenticated,
+        events,
+        setIsAuthenticated,
+        setEvents,
+        paymentStatus,
+        setPaymentStatus,
+      }}
     >
       {children}
     </AppContext.Provider>
