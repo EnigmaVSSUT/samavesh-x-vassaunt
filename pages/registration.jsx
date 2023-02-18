@@ -61,11 +61,7 @@ const Form = () => {
   const [otp, setOtp] = useState();
   const [open, setOpen] = useState(false);
   const [isVssutian, setIsVssutian] = useState(false);
-  //form validation
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
+
   const regexExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   const handleOpen = async () => {
