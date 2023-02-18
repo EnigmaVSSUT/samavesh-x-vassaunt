@@ -114,7 +114,7 @@ const Header = () => {
               },
             }}
           >
-            <Link href="/profile">
+            <Link href="/Profile">
               <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
               </IconButton>
@@ -172,7 +172,7 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
-                <Link href="/profile" onClick={() => setOpen(false)}>
+                <Link href="/Profile" onClick={() => setOpen(false)}>
                   <Typography variant="nav">Profile</Typography>
                 </Link>
               )}{" "}
