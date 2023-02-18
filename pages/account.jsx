@@ -36,10 +36,12 @@ const Account = () => {
             xs: 5,
             md: 40,
           }}
-          sx={{
-            backgroundColor: "#C0000A",
-            borderRadius: "20px",
-          }}
+          sx={
+            {
+              // backgroundColor:"black",
+              // borderRadius:"20px"
+            }
+          }
         >
           <Avatar
             src="/clubs/5.png"
@@ -59,7 +61,7 @@ const Account = () => {
           <Stack
             direction="column"
             spacing={{ xs: 1, md: 3 }}
-            sx={{ color: "white" }}
+            // sx={{color:"white"}}
           >
             <Typography variant="h5">Name : Andu Pandu</Typography>
             <Typography variant="h5">Institution : VSSUT</Typography>
