@@ -6,7 +6,6 @@ import "material-react-toastify/dist/ReactToastify.css";
 import Ticket from "@/components/ticket";
 import React from "react";
 import { Button, Typography } from "@mui/material";
-
 import { useState, useEffect } from "react";
 import ticket from "@/components/ticket";
 import AppContext from "context/AppContext";
