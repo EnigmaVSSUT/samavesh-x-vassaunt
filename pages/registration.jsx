@@ -127,7 +127,7 @@ const Form = () => {
           email,
           password: cpwd,
           isVssutian: colgname === "VSSUT" ? true : false,
-          regdNo: regnum ? regnum : 0,
+          regdNo: regnum ? regnum : 1,
           college: colgname,
           graduationYear: year,
           branch,

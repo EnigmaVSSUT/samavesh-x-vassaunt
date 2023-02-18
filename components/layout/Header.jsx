@@ -125,7 +125,11 @@ const Header = () => {
               },
             }}
           >
-            <Button variant="contained" sx={{ borderRadius: "20px" }}>
+            <Button
+              variant="contained"
+              sx={{ borderRadius: "20px" }}
+              onClick={logout}
+            >
               Logout
             </Button>
             <Link href="/Profile">

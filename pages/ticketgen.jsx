@@ -10,12 +10,37 @@ import { useState, useEffect } from "react";
 import ticket from "@/components/ticket";
 import AppContext from "context/AppContext";
 import { useRouter } from "next/router";
+import axios from "axios";
 const Ticketgen = () => {
   const router = useRouter();
-  const { isAuthenticated, paymentStatus } = React.useContext(AppContext);
+  const [paymentStatus, setPaymentStatus] = useState(false);
+
+  // const { isAuthenticated, paymentStatus } = React.useContext(AppContext);
   useEffect(() => {
-    if (!paymentStatus) {
-      router.push("/PaymentPage");
+    if (!localStorage.getItem("token")) {
+      router.push("/registration");
+    } else {
+      const userToken = localStorage.getItem("token");
+      const getPaymentStatus = async () => {
+        const { data } = await axios.post(
+          "http://localhost:8000/api/payment/getpayment",
+          {},
+          {
+            headers: {
+              authorisation: userToken,
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+        if (data.link_status !== "PAID") {
+          setPaymentStatus(false);
+          router.push("/paymentPage");
+        }
+      };
+
+      getPaymentStatus();
     }
   }, []);
   const [file, setFile] = useState();
