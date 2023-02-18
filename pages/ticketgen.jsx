@@ -5,9 +5,9 @@ import "material-react-toastify/dist/ReactToastify.css";
 import Ticket from "@/components/ticket";
 import React from "react";
 import { Button, Typography } from "@mui/material";
-
+import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { PDFViewer } from "@react-pdf/renderer";
 import { useState, useEffect } from "react";
-import ticket from "@/components/ticket";
 
 const Ticketgen = () => {
   const [file, setFile] = useState();
