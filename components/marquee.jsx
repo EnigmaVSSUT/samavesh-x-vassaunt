@@ -12,8 +12,9 @@ const Marqueesv = () => {
           WebkitTextStrokeWidth: "1px",
           postion: "relative",
           top: "50px",
-          paddingTop: "20px",
-          zIndex: "-3",
+          paddingTop: "40px",
+          zIndex: "-5",
+          margin: "0 80px",
         }}
       >
         SAMAVESH <span id="black">X</span> VASSAUNT
@@ -27,8 +28,8 @@ const Marqueesv = () => {
           WebkitTextStrokeWidth: "1px",
           postion: "relative",
           top: "50px",
-          paddingTop: "20px",
-          zIndex: "-3",
+          paddingTop: "40px",
+          zIndex: "-5",
         }}
       >
         SAMAVESH <span id="black">X</span> VASSAUNT

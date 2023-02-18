@@ -63,6 +63,7 @@ const Speakers = () => {
       <Typography
         variant="h1"
         textAlign="center"
+        margin="3rem 0"
         sx={{ fontSize: "45px", lineHeight: "52px" }}
       >
         The Team
@@ -70,13 +71,14 @@ const Speakers = () => {
       <Typography
         textAlign="center"
         margin="20px 0"
-        variant="p"
-        sx={{ fontSize: "35px", lineHeight: "52px", fontWeight: "100" }}
+        variant="h3"
+        sx={{ fontSize: "35px", lineHeight: "52px" }}
       >
-        Hon &apos; ble Mentions
+        Hon&apos;ble Mentions
       </Typography>
       <Stack
         direction="column"
+        marginBottom="2rem"
         width="90%"
         alignItems="center"
         justifyContent="center"
@@ -118,7 +120,9 @@ const Speakers = () => {
                 p
               </Avatar>
               <Box>
-                <Typography color="black">{e.name}</Typography>
+                <Typography variant="h6" color="black">
+                  {e.name}
+                </Typography>
                 <Typography variant="p" color="black">
                   {e.designation}
                 </Typography>
@@ -129,10 +133,10 @@ const Speakers = () => {
         <Typography
           textAlign="center"
           margin="20px 0"
-          variant="p"
+          variant="h3"
           sx={{ fontSize: "35px", lineHeight: "52px", fontWeight: "100" }}
         >
-          STUDENT BODIES
+          Student Bodies
         </Typography>
         <Stack
           margin="25px auto"
@@ -172,7 +176,9 @@ const Speakers = () => {
                 p
               </Avatar>
               <Box>
-                <Typography color="black">{e.name}</Typography>
+                <Typography variant="h6" color="black">
+                  {e.name}
+                </Typography>
                 <Typography variant="p" color="black">
                   {e.designation}
                 </Typography>
