@@ -1,15 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useEffect } from "react";
 import AppContext from "context/AppContext";
 import { useRouter } from "next/router";
 const PaymentPage = () => {
   const router = useRouter();
-  const { isAuthenticated, PaymentStatus } = React.useContext(AppContext);
+
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!localStorage.getItem("token")) {
       router.push("/registration");
+    } else {
     }
-  });
+  }, []);
   return <div>PaymentPage</div>;
 };
 

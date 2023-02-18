@@ -1,6 +1,7 @@
 import React from "react";
 import { Stack } from "@mui/system";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 import {
   Radio,
   RadioGroup,
@@ -15,9 +16,14 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import AppContext from "context/AppContext";
 import { useRouter } from "next/router";
+import { LoadingButton } from "@mui/lab";
+import { ToastContainer, toast } from "react-toastify";
+// import { Toast } from "react-toastify/dist/components";
+
 const Form = () => {
-  const { isAuthenticated } = React.useContext(AppContext);
-  const [reg, setReg] = useState(false);
+  const { isAuthenticated, setIsAuthenticated } = React.useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const router = useRouter();
@@ -26,8 +32,62 @@ const Form = () => {
       router.push("/");
     }
   });
-  const submit = (email, pwd) => {
+  const submit = async (email, pwd) => {
+    if (!pwd || !email) {
+      return toast.warning("All fields must be filled", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    setLoading(true);
     console.log({ email: email }, { password: pwd });
+    const { data } = await axios.post(
+      "http://localhost:8000/api/auth/login",
+      { email: email, password: pwd },
+      {
+        headers: {
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (await data.success) {
+      toast.success(await data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      localStorage.setItem("token", await data.token);
+      setIsAuthenticated(true);
+      router.push("/");
+      setPwd("");
+      setEmail("");
+    } else {
+      toast.error(await data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    setLoading(false);
   };
   return (
     <Stack direction="row" justifyContent="center">
@@ -37,6 +97,7 @@ const Form = () => {
         justifyContent="space-around"
         alignItems="center"
       >
+        <ToastContainer />
         <Stack
           //   maxWidth="550px"
           height="auto"
@@ -76,9 +137,14 @@ const Form = () => {
               }}
             />
           </Stack>
-          <Button variant="contained" onClick={() => submit(email, pwd)}>
+          <LoadingButton
+            loading={loading}
+            variant="contained"
+            onClick={() => submit(email, pwd)}
+          >
             Login
-          </Button>
+          </LoadingButton>
+          {/* <ToastContainer /> */}
         </Stack>
         <Box
           sx={{
