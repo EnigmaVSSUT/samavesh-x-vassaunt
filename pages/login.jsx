@@ -18,6 +18,15 @@ import AppContext from "context/AppContext";
 import { useRouter } from "next/router";
 import { LoadingButton } from "@mui/lab";
 import { ToastContainer, toast } from "react-toastify";
+
+import {
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 // import { Toast } from "react-toastify/dist/components";
 
 const Form = () => {
@@ -32,6 +41,26 @@ const Form = () => {
       router.push("/");
     }
   });
+
+  const [values, setValues] = React.useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+  //password visibility
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const submit = async (email, pwd) => {
     if (!pwd || !email) {
       return toast.warning("All fields must be filled", {
@@ -124,23 +153,37 @@ const Form = () => {
             }}
           />
           <Stack sx={{ marginTop: "10px" }}>
-            <TextField
-              required
-              id="name"
-              label="Password"
-              variant="outlined"
-              type="password"
-              paddingTop="10px"
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password*
+            </InputLabel>
+            <OutlinedInput
+              id="pwd"
+              type={values.showPassword ? "text" : "password"}
               value={pwd}
+              size="small"
               onChange={(e) => {
                 setPwd(e.target.value);
               }}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
             />
           </Stack>
           <LoadingButton
             loading={loading}
             variant="contained"
             onClick={() => submit(email, pwd)}
+            fullWidth="true"
           >
             Login
           </LoadingButton>
