@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 const Account = () => {
   const router = useRouter();
   React.useEffect(() => {
-    if (!localStorage.getItem("token")) return router.push("/");
+    if (!localStorage.getItem("token")) router.push("/");
   }, []);
   return (
     <>

@@ -132,7 +132,11 @@ const Header = () => {
             >
               Logout
             </Button>
-            <Link href="/Profile">
+            <Link
+              href={
+                localStorage.getItem("token") ? "/account" : "/registration"
+              }
+            >
               <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
               </IconButton>
