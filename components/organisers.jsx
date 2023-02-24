@@ -43,17 +43,17 @@ const Speakers = () => {
     },
     {
       name: "name",
-      designation: "designation",
+      designation: "designation here",
       id: "2",
     },
     {
       name: "name",
-      designation: "designation",
+      designation: "designation here",
       id: "3",
     },
     {
       name: "name",
-      designation: "designation",
+      designation: "designation here",
       id: "4",
     },
   ];
@@ -104,6 +104,7 @@ const Speakers = () => {
                   xs: "300px",
                   md: "400px",
                 },
+                gap: "20px",
                 height: "100px",
                 backgroundColor: "white",
                 color: "#ffffff",
@@ -116,14 +117,17 @@ const Speakers = () => {
                   height: "80px",
                   width: "80px",
                 }}
-              >
-                p
-              </Avatar>
+              ></Avatar>
               <Box>
                 <Typography variant="h6" color="black">
                   {e.name}
                 </Typography>
-                <Typography variant="p" color="black">
+                <Typography
+                  variant="p"
+                  color="black"
+                  fontFamily="Product Sans"
+                  fontWeight="600"
+                >
                   {e.designation}
                 </Typography>
               </Box>
@@ -179,7 +183,12 @@ const Speakers = () => {
                 <Typography variant="h6" color="black">
                   {e.name}
                 </Typography>
-                <Typography variant="p" color="black">
+                <Typography
+                  variant="p"
+                  color="black"
+                  fontFamily="Product Sans"
+                  fontWeight="600"
+                >
                   {e.designation}
                 </Typography>
               </Box>
