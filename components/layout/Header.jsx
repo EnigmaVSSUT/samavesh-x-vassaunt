@@ -125,10 +125,18 @@ const Header = () => {
               },
             }}
           >
-            <Button variant="contained" sx={{ borderRadius: "20px" }}>
+            <Button
+              variant="contained"
+              sx={{ borderRadius: "20px" }}
+              onClick={logout}
+            >
               Logout
             </Button>
-            <Link href="/Profile">
+            <Link
+              href={
+                localStorage.getItem("token") ? "/account" : "/registration"
+              }
+            >
               <IconButton variant="contained">
                 <PersonIcon></PersonIcon>
               </IconButton>
@@ -189,7 +197,12 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
-                <Link href="/Profile" onClick={() => setOpen(false)}>
+                <Link
+                  href={
+                    localStorage.getItem("token") ? "/account" : "/registration"
+                  }
+                  onClick={() => setOpen(false)}
+                >
                   <Typography variant="nav">Profile</Typography>
                 </Link>
               )}{" "}

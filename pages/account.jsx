@@ -1,11 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Stack } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import { Avatar, Grid } from "@mui/material";
 import ClubCard from "@/components/ClubCard";
 import club from "../lib/data/club";
 import Events from "@/components/events";
-
+import React from "react";
+import { useRouter } from "next/router";
 const Account = () => {
+  const router = useRouter();
+  React.useEffect(() => {
+    if (!localStorage.getItem("token")) router.push("/");
+  }, []);
   return (
     <>
       <Stack

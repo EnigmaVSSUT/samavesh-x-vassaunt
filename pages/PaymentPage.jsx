@@ -11,7 +11,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const PaymentPage = () => {
   const router = useRouter();
-  const { isAuthenticated, PaymentStatus } = React.useContext(AppContext);
+  // const { isAuthenticated, PaymentStatus } = React.useContext(AppContext);
+  const [paymentStatus, setPaymentStatus] = useState(false);
+  const [paymentLink, setPaymentLink] = useState();
   const details = {
     name: "Soham Samantaray",
     branch: "CSE",
@@ -23,9 +25,51 @@ const PaymentPage = () => {
     if (!localStorage.getItem("token")) {
       router.push("/registration");
     } else {
-      toast.warning(
-        "Oops!! seems you have not paid,Please complete the payment process"
-      );
+      const userToken = localStorage.getItem("token");
+      const getPaymentStatus = async () => {
+        const { data } = await axios.post(
+          "http://localhost:8000/api/payment/getpayment",
+          {},
+          {
+            headers: {
+              authorisation: userToken,
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
+        // console.log(data.link_url, data)
+        if (data.link_status === "PAID") {
+          setPaymentStatus(true);
+          router.push("/ticketgen");
+        } else if (data.link_status !== "PAID") {
+          toast.warning(
+            "Oops!! seems you have not paid for the ticket, Please complete the payment process"
+          );
+        }
+        if (!data.link_url) {
+          const { data } = await axios.post(
+            "http://localhost:8000/api/payment/makepayment",
+            {},
+            {
+              headers: {
+                authorisation: userToken,
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+            }
+          );
+          setPaymentLink(data.link_url);
+          // console.log(data)
+        } else {
+          setPaymentLink(data.link_url);
+          // console.log(data)
+        }
+      };
+
+      getPaymentStatus();
     }
   }, []);
   return (
@@ -57,7 +101,12 @@ const PaymentPage = () => {
         <Typography variant="caption" color="initial">
           Amount to be paid: {details.amount}
         </Typography>
-        <Button variant="contained" color="primary" sx={{ marginTop: "10px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: "10px" }}
+          href={paymentLink}
+        >
           Make Payment
         </Button>
       </Stack>
