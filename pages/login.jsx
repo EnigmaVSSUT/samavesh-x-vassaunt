@@ -18,7 +18,7 @@ import AppContext from "context/AppContext";
 import { useRouter } from "next/router";
 import { LoadingButton } from "@mui/lab";
 import { ToastContainer, toast } from "react-toastify";
-
+import "material-react-toastify/dist/ReactToastify.css";
 import {
   Input,
   InputAdornment,
@@ -27,7 +27,6 @@ import {
   IconButton,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-// import { Toast } from "react-toastify/dist/components";
 
 const Form = () => {
   const { isAuthenticated, setIsAuthenticated } = React.useContext(AppContext);
@@ -63,19 +62,10 @@ const Form = () => {
 
   const submit = async (email, pwd) => {
     if (!pwd || !email) {
-      return toast.warning("All fields must be filled", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.warning("All field must be filled");
     }
     setLoading(true);
-    console.log({ email: email }, { password: pwd });
+    // console.log({ email: email }, { password: pwd });
     const { data } = await axios.post(
       "http://localhost:8000/api/auth/login",
       { email: email, password: pwd },
@@ -88,16 +78,7 @@ const Form = () => {
       }
     );
     if (await data.success) {
-      toast.success(await data.message, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Login Sucessful");
 
       localStorage.setItem("token", await data.token);
       setIsAuthenticated(true);
@@ -105,16 +86,7 @@ const Form = () => {
       setPwd("");
       setEmail("");
     } else {
-      toast.error(await data.message, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error("Credentials not matching");
     }
     setLoading(false);
   };
@@ -187,7 +159,6 @@ const Form = () => {
           >
             Login
           </LoadingButton>
-          {/* <ToastContainer /> */}
         </Stack>
         <Box
           sx={{
